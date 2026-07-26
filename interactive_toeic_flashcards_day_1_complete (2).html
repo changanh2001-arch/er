@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEIC Flashcards - Day 1: Recruitment (168 Words Complete)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        .perspective {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: #ffffff;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .pulse-audio {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const fullVocabularyData = [
+            // ==================== 40 TỪ TRỌNG TÂM DAY 1 (1 - 40) ====================
+            { id: 1, word: "resume", ipa: "/ˈrezəmeɪ/", pos: "noun", chinese: "简历", vietnamese: "Sơ yếu lý lịch, CV", collocation: "submit a resume", collocationCn: "提交简历", collocationVi: "nộp sơ yếu lý lịch", example: "Fax your resume and cover letter to the above number.", exampleCn: "请将您的简历和求职信传真至上述号码。", exampleVi: "Hãy gửi sơ yếu lý lịch và đơn xin việc của bạn qua fax đến số bên trên.", wordFamily: "resume (v)", synonym: "CV, curriculum vitae", category: "core" },
+            { id: 2, word: "opening", ipa: "/ˈoʊpnɪŋ/", pos: "noun", chinese: "职位空缺", vietnamese: "Vị trí trống, lễ khai trương", collocation: "job opening", collocationCn: "职位空缺", collocationVi: "vị trí công việc còn trống", example: "There are several job openings at the restaurant right now.", exampleCn: "目前这家餐厅有几个职位空缺。", exampleVi: "Ngay bây giờ đang có một vài vị trí công việc còn trống ở nhà hàng.", wordFamily: "open (v/adj)", synonym: "vacancy", category: "core" },
+            { id: 3, word: "applicant", ipa: "/ˈæplɪkənt/", pos: "noun", chinese: "申请人, 求职者", vietnamese: "Ứng viên, người xin việc", collocation: "job applicant", collocationCn: "求职人员", collocationVi: "ứng viên xin việc", example: "Applicants are required to submit a resume.", exampleCn: "申请人必须提交简历。", exampleVi: "Các ứng viên cần phải nộp sơ yếu lý lịch.", wordFamily: "apply (v), application (n)", synonym: "candidate", category: "core" },
+            { id: 4, word: "requirement", ipa: "/rɪˈkwaɪərmənt/", pos: "noun", chinese: "要求, 必要条件", vietnamese: "Yêu cầu, điều kiện cần thiết", collocation: "meet requirements", collocationCn: "满足要求", collocationVi: "đáp ứng các yêu cầu", example: "A driver's license is a requirement of this job.", exampleCn: "驾照是这项工作的必要条件。", exampleVi: "Giấy phép lái xe là một điều kiện cần cho công việc này.", wordFamily: "require (v)", synonym: "prerequisite", category: "core" },
+            { id: 5, word: "meet", ipa: "/miːt/", pos: "verb", chinese: "满足, 达到", vietnamese: "Thỏa mãn, đáp ứng (yêu cầu)", collocation: "meet one's needs", collocationCn: "满足需求", collocationVi: "đáp ứng nhu cầu của ai", example: "Applicants must meet all the requirements for the job.", exampleCn: "申请人必须满足该工作的所有要求。", exampleVi: "Các ứng viên phải đáp ứng tất cả yêu cầu của công việc.", wordFamily: "meeting (n)", synonym: "satisfy, fulfill", category: "core" },
+            { id: 6, word: "qualified", ipa: "/ˈkwɑːlɪfaɪd/", pos: "adjective", chinese: "合格的, 有资格的", vietnamese: "Đủ khả năng, trình độ", collocation: "be qualified for", collocationCn: "具备...的资格", collocationVi: "đủ điều kiện cho", example: "People with master's degrees are qualified for the research position.", exampleCn: "拥有硕士学位的人有资格担任该研究职位。", exampleVi: "Những người có bằng thạc sĩ thì đủ điều kiện cho vị trí nghiên cứu này.", wordFamily: "qualify (v), qualification (n)", synonym: "certified, competent", category: "core" },
+            { id: 7, word: "candidate", ipa: "/ˈkændɪdət/", pos: "noun", chinese: "候选人, 应试者", vietnamese: "Ứng viên, thí sinh", collocation: "final candidate", collocationCn: "最终候选人", collocationVi: "ứng viên vòng cuối", example: "Five candidates will be selected for final interviews.", exampleCn: "将挑选五名候选人参加最终面试。", exampleVi: "Năm ứng viên sẽ được chọn vào vòng phỏng vấn cuối cùng.", wordFamily: "candidacy (n)", synonym: "applicant", category: "core" },
+            { id: 8, word: "confidence", ipa: "/ˈkɑːnfɪdəns/", pos: "noun", chinese: "信心, 信任", vietnamese: "Sự tự tin, lòng tin", collocation: "show confidence in", collocationCn: "对...表现出信心", collocationVi: "thể hiện sự tin tưởng vào", example: "We have confidence that she can handle the position.", exampleCn: "我们有信心她能胜任这个职位。", exampleVi: "Chúng tôi có lòng tin rằng cô ấy có thể đảm đương được vị trí này.", wordFamily: "confident (adj)", synonym: "trust, belief", category: "core" },
+            { id: 9, word: "highly", ipa: "/ˈhaɪli/", pos: "adverb", chinese: "高度地, 非常", vietnamese: "Rất, hết sức", collocation: "highly recommended", collocationCn: "高度推荐", collocationVi: "rất được đề xuất", example: "Mr. Monroe's experience makes him highly qualified for the job.", exampleCn: "门罗先生的经验使他非常胜任这项工作。", exampleVi: "Kinh nghiệm của Monroe khiến ông ấy rất phù hợp với công việc này.", wordFamily: "high (adj)", synonym: "extremely, very", category: "core" },
+            { id: 10, word: "professional", ipa: "/prəˈfeʃənl/", pos: "adjective / noun", chinese: "专业的 / 专业人士", vietnamese: "Chuyên nghiệp / Chuyên gia", collocation: "professional attire", collocationCn: "专业正装", collocationVi: "trang phục công sở chuyên nghiệp", example: "Jeff is known as a professional photographer.", exampleCn: "杰夫以专业摄影师而闻名。", exampleVi: "Jeff được biết đến như một nhiếp ảnh gia chuyên nghiệp.", wordFamily: "profession (n)", synonym: "expert, masterful", category: "core" },
+            { id: 11, word: "interview", ipa: "/ˈɪntərvjuː/", pos: "noun / verb", chinese: "面试 / 进行面试", vietnamese: "Cuộc phỏng vấn / Phỏng vấn", collocation: "hold an interview", collocationCn: "举行面试", collocationVi: "tổ chức phỏng vấn", example: "The manager interviewed almost 100 applicants.", exampleCn: "经理面试了近100名申请人。", exampleVi: "Vị quản lý này đã phỏng vấn gần 100 ứng viên.", wordFamily: "interviewer (n), interviewee (n)", synonym: "meeting", category: "core" },
+            { id: 12, word: "hire", ipa: "/ˈhaɪər/", pos: "verb", chinese: "雇用, 聘用", vietnamese: "Tuyển dụng, thuê mướn", collocation: "hire new employees", collocationCn: "雇用新员工", collocationVi: "tuyển nhân viên mới", example: "The company expects to hire several new employees next month.", exampleCn: "公司预计下个月将雇用几名新员工。", exampleVi: "Công ty kỳ vọng sẽ tuyển được vài nhân viên mới vào tháng tới.", wordFamily: "hire (n)", synonym: "employ, recruit", category: "core" },
+            { id: 13, word: "training", ipa: "/ˈtreɪnɪŋ/", pos: "noun", chinese: "培训, 训练", vietnamese: "Sự đào tạo, huấn luyện", collocation: "on-the-job training", collocationCn: "在职培训", collocationVi: "đào tạo tại chỗ", example: "This company offers on-the-job training for new staff.", exampleCn: "该公司为新员工提供在职培训。", exampleVi: "Công ty này cung cấp chương trình đào tạo tại chỗ cho nhân viên mới.", wordFamily: "train (v), trainer (n)", synonym: "coaching, instruction", category: "core" },
+            { id: 14, word: "reference", ipa: "/ˈrefərəns/", pos: "noun", chinese: "参考, 推荐信", vietnamese: "Thư giới thiệu, sự tham khảo", collocation: "reference letter", collocationCn: "推荐信", collocationVi: "thư giới thiệu", example: "Philip asked his previous employer to write a reference letter for him.", exampleCn: "菲利普请他的前雇主为他写一封推荐信。", exampleVi: "Philip nhờ quản lý cũ của mình viết một lá thư giới thiệu cho anh ấy.", wordFamily: "refer (v)", synonym: "recommendation", category: "core" },
+            { id: 15, word: "position", ipa: "/pəˈzɪʃn/", pos: "noun / verb", chinese: "职位 / 安放", vietnamese: "Vị trí, chức vụ / Đặt vào vị trí", collocation: "apply for a position", collocationCn: "应聘职位", collocationVi: "ứng tuyển một vị trí", example: "The advertised position provides health care and other benefits.", exampleCn: "招聘广告中的职位提供医疗保健和其他福利。", exampleVi: "Vị trí được quảng cáo đó chu cấp dịch vụ chăm sóc sức khỏe và các phúc lợi khác.", wordFamily: "positional (adj)", synonym: "post, job", category: "core" },
+            { id: 16, word: "achievement", ipa: "/əˈtʃiːvmənt/", pos: "noun", chinese: "成就, 成绩", vietnamese: "Thành tựu, thành tích", collocation: "list achievements", collocationCn: "列出成就", collocationVi: "liệt kê thành tích", example: "List all of your achievements from previous jobs on your resume.", exampleCn: "请在简历上列出您以往工作的所有成就。", exampleVi: "Hãy liệt kê tất cả những thành tích của bạn trong công việc trước vào bản sơ yếu lý lịch.", wordFamily: "achieve (v)", synonym: "accomplishment", category: "core" },
+            { id: 17, word: "impressed", ipa: "/ɪmˈprest/", pos: "adjective", chinese: "印象深刻的", vietnamese: "Có ấn tượng, cảm phục", collocation: "be impressed by", collocationCn: "对...印象深刻", collocationVi: "bị ấn tượng bởi", example: "The CEO was impressed by his assistant's organizing skills.", exampleCn: "首席执行官对他助理的组织能力印象深刻。", exampleVi: "Vị giám đốc điều hành đã bị ấn tượng bởi kỹ năng tổ chức của viên thư ký đó.", wordFamily: "impress (v), impressive (adj)", synonym: "admiring, moved", category: "core" },
+            { id: 18, word: "excellent", ipa: "/ˈeksələnt/", pos: "adjective", chinese: "优秀的, 卓越的", vietnamese: "Xuất sắc, vượt trội", collocation: "excellent skills", collocationCn: "出色的技能", collocationVi: "kỹ năng xuất sắc", example: "Because of her excellent managerial skills, Erin was hired for the job.", exampleCn: "由于出色的管理技能，埃琳被聘用了。", exampleVi: "Nhờ kỹ năng quản lý xuất sắc của mình, Erin đã được tuyển dụng làm công việc này.", wordFamily: "excellence (n)", synonym: "outstanding, superb", category: "core" },
+            { id: 19, word: "eligible", ipa: "/ˈelɪdʒəbl/", pos: "adjective", chinese: "有资格的, 合格的", vietnamese: "Đủ điều kiện, có tư cách", collocation: "be eligible for", collocationCn: "有资格获得...", collocationVi: "đủ điều kiện cho", example: "The part-time workers are also eligible for paid holidays.", exampleCn: "兼职员工也有资格享受带薪休假。", exampleVi: "Các nhân viên bán thời gian cũng đủ điều kiện để được nghỉ phép có trả lương.", wordFamily: "eligibility (n)", synonym: "entitled, qualified", category: "core" },
+            { id: 20, word: "identify", ipa: "/aɪˈdentɪfaɪ/", pos: "verb", chinese: "识别, 确认", vietnamese: "Nhận diện, nhận ra", collocation: "easy to identify", collocationCn: "容易识别", collocationVi: "dễ dàng nhận ra", example: "Staff members wear uniforms so that they are easy for customers to identify.", exampleCn: "员工穿着制服，以便客户轻松识别。", exampleVi: "Nhân viên mặc đồng phục để khách hàng dễ dàng nhận ra họ.", wordFamily: "identification (n)", synonym: "recognize", category: "core" },
+
+            { id: 21, word: "associate", ipa: "/əˈsoʊʃieɪt/", pos: "verb / noun", chinese: "关联 / 同事", vietnamese: "Liên kết / Đồng nghiệp", collocation: "be associated with", collocationCn: "与...有关联", collocationVi: "có liên quan đến", example: "Two of the applicants were associated with a competitor.", exampleCn: "其中两名申请人与竞争对手有关联。", exampleVi: "Hai trong số các ứng viên có liên kết với một đối thủ.", wordFamily: "association (n)", synonym: "connect, relate", category: "core" },
+            { id: 22, word: "condition", ipa: "/kənˈdɪʃn/", pos: "noun", chinese: "条件, 状况", vietnamese: "Điều kiện, trạng thái", collocation: "conditions of employment", collocationCn: "雇用条件", collocationVi: "điều kiện tuyển dụng", example: "The conditions of employment are listed in the job description.", exampleCn: "雇用条件已在职位描述中列出。", exampleVi: "Những điều kiện của công việc được liệt kê trong bản mô tả công việc.", wordFamily: "conditional (adj)", synonym: "term, requirement", category: "core" },
+            { id: 23, word: "employment", ipa: "/ɪmˈplɔɪmənt/", pos: "noun", chinese: "就业, 雇用", vietnamese: "Việc làm, sự tuyển dụng", collocation: "employment opportunities", collocationCn: "就业机会", collocationVi: "cơ hội việc làm", example: "The company announced employment opportunities in the personnel department.", exampleCn: "公司宣布了人事部门的就业机会。", exampleVi: "Công ty đã thông báo những cơ hội việc làm ở phòng nhân sự.", wordFamily: "employ (v), employee (n)", synonym: "work, job", category: "core" },
+            { id: 24, word: "lack", ipa: "/læk/", pos: "verb / noun", chinese: "缺乏, 缺少", vietnamese: "Thiếu, sự thiếu hụt", collocation: "lack the ability", collocationCn: "缺乏能力", collocationVi: "thiếu khả năng", example: "Carl lacked the ability to get along well with his coworkers.", exampleCn: "卡尔缺乏与同事融洽相处的能力。", exampleVi: "Carl không có khả năng hòa nhập với các đồng nghiệp của mình.", wordFamily: "lacking (adj)", synonym: "shortage, deficiency", category: "core" },
+            { id: 25, word: "managerial", ipa: "/ˌmænəˈdʒɪriəl/", pos: "adjective", chinese: "管理的", vietnamese: "Thuộc về quản lý", collocation: "managerial position", collocationCn: "管理职位", collocationVi: "vị trí quản lý", example: "Mike is seeking a managerial position in the accounting field.", exampleCn: "迈克正在会计领域寻求一个管理职位。", exampleVi: "Mike đang tìm kiếm một vị trí quản lý trong ngành kế toán.", wordFamily: "manage (v), manager (n)", synonym: "supervisory", category: "core" },
+            { id: 26, word: "diligent", ipa: "/ˈdɪlɪdʒənt/", pos: "adjective", chinese: "勤奋的, 用功的", vietnamese: "Siêng năng, cần cù", collocation: "diligent worker", collocationCn: "勤奋的员工", collocationVi: "nhân viên cần cù", example: "Carmen is one of the most diligent workers in the company.", exampleCn: "卡门是公司里最勤奋的员工之一。", exampleVi: "Carmen là một trong những nhân viên siêng năng nhất ở công ty.", wordFamily: "diligence (n), diligently (adv)", synonym: "hardworking, industrious", category: "core" },
+            { id: 27, word: "familiar", ipa: "/fəˈmɪliər/", pos: "adjective", chinese: "熟悉的", vietnamese: "Quen thuộc, thuần thục", collocation: "be familiar with", collocationCn: "熟悉...", collocationVi: "quen thuộc với", example: "Staff must review the handbook to become familiar with it.", exampleCn: "员工必须复习手册以熟悉其内容。", exampleVi: "Nhân viên phải xem lại sổ tay hướng dẫn để nắm rõ nó.", wordFamily: "familiarize (v)", synonym: "accustomed, conversant", category: "core" },
+            { id: 28, word: "proficiency", ipa: "/prəˈfɪʃnsi/", pos: "noun", chinese: "精通, 熟练", vietnamese: "Sự thành thạo, thông thạo", collocation: "proof of proficiency", collocationCn: "熟练程度证明", collocationVi: "bằng chứng thành thạo", example: "Overseas workers need proof of proficiency in a second language.", exampleCn: "海外员工需要提供第二语言熟练程度的证明。", exampleVi: "Người lao động ở nước ngoài cần phải chứng minh sự thông thạo ngôn ngữ thứ hai.", wordFamily: "proficient (adj)", synonym: "mastery, competence", category: "core" },
+            { id: 29, word: "prospective", ipa: "/prəˈspektɪv/", pos: "adjective", chinese: "有希望的, 预期的", vietnamese: "Tiềm năng, triển vọng", collocation: "prospective employee", collocationCn: "预期的员工", collocationVi: "nhân viên tiềm năng", example: "Prospective employees were asked to come in for a second interview.", exampleCn: "可能的求职者被要求参加第二次面试。", exampleVi: "Các nhân viên tiềm năng được yêu cầu đến phỏng vấn vòng hai.", wordFamily: "prospect (n)", synonym: "potential, future", category: "core" },
+            { id: 30, word: "appeal", ipa: "/əˈpiːl/", pos: "verb / noun", chinese: "吸引, 呼吁", vietnamese: "Lôi cuốn, hấp dẫn", collocation: "appeal to", collocationCn: "吸引...", collocationVi: "hấp dẫn ai", example: "The 10 percent pay increase appealed to the staff.", exampleCn: "加薪10%吸引了员工。", exampleVi: "Mức tăng lương 10% đã hấp dẫn các nhân viên.", wordFamily: "appealing (adj)", synonym: "attract, interest", category: "core" },
+            { id: 31, word: "specialize", ipa: "/ˈspeʃəlaɪz/", pos: "verb", chinese: "专门研究, 专攻", vietnamese: "Chuyên làm về, học chuyên", collocation: "specialize in", collocationCn: "专攻于...", collocationVi: "chuyên về lĩnh vực", example: "Most of the programmers specialized in software design in college.", exampleCn: "大多数程序员在大学时专攻软件设计。", exampleVi: "Hầu hết các lập trình viên đều học chuyên về thiết kế phần mềm ở trường đại học.", wordFamily: "specialist (n), specialty (n)", synonym: "major in", category: "core" },
+            { id: 32, word: "apprehensive", ipa: "/ˌæprɪˈhensɪv/", pos: "adjective", chinese: "忧虑的, 担心的", vietnamese: "Lo lắng, e sợ", collocation: "feel apprehensive", collocationCn: "感到担忧", collocationVi: "cảm thấy lo lắng", example: "Many people feel apprehensive before an important job interview.", exampleCn: "许多人在重要的求职面试前会感到担忧。", exampleVi: "Nhiều người cảm thấy lo lắng trước một cuộc phỏng vấn tuyển dụng quan trọng.", wordFamily: "apprehension (n)", synonym: "anxious, concerned", category: "core" },
+            { id: 33, word: "consultant", ipa: "/kənˈsʌltənt/", pos: "noun", chinese: "顾问, 咨询师", vietnamese: "Người tư vấn, cố vấn", collocation: "design consultant", collocationCn: "设计顾问", collocationVi: "cố vấn thiết kế", example: "Emma currently works in London as an interior design consultant.", exampleCn: "艾玛目前在伦敦担任室内设计顾问。", exampleVi: "Emma hiện đang làm việc ở London trong vai trò một người tư vấn thiết kế nội thất.", wordFamily: "consult (v), consultation (n)", synonym: "advisor, counselor", category: "core" },
+            { id: 34, word: "entitle", ipa: "/ɪnˈtaɪtl/", pos: "verb", chinese: "赋予资格, 给予权利", vietnamese: "Cho quyền, được hưởng", collocation: "be entitled to", collocationCn: "有资格享有...", collocationVi: "được hưởng quyền lợi", example: "Executives are entitled to additional benefits.", exampleCn: "高管有权享受额外福利。", exampleVi: "Các ủy viên ban quản trị được hưởng những quyền lợi bổ sung.", wordFamily: "entitlement (n)", synonym: "authorize, allow", category: "core" },
+            { id: 35, word: "degree", ipa: "/dɪˈɡriː/", pos: "noun", chinese: "学位, 程度", vietnamese: "Bằng cấp, trình độ", collocation: "bachelor's degree", collocationCn: "学士学位", collocationVi: "bằng cử nhân", example: "A bachelor's degree in engineering is a requirement for this position.", exampleCn: "工程学士学位是该职位的要求。", exampleVi: "Bằng cử nhân về kỹ thuật là một điều kiện cần thiết cho vị trí này.", wordFamily: "degress (n)", synonym: "diploma, qualification", category: "core" },
+            { id: 36, word: "payroll", ipa: "/ˈpeɪroʊl/", pos: "noun", chinese: "工资表, 发薪名单", vietnamese: "Bảng lương, tổng quỹ lương", collocation: "on the payroll", collocationCn: "在发薪名单上", collocationVi: "được tuyển dụng trả lương", example: "Fifteen new employees were added to the payroll last month.", exampleCn: "上个月发薪名单中增加了15名新员工。", exampleVi: "Mười lăm nhân viên mới đã được bổ sung vào bảng lương tháng trước.", wordFamily: "pay (v/n)", synonym: "salaries, wages", category: "core" },
+            { id: 37, word: "recruit", ipa: "/rɪˈkruːt/", pos: "verb / noun", chinese: "招聘 / 新成员", vietnamese: "Tuyển dụng / Nhân viên mới", collocation: "recruit graduates", collocationCn: "招聘毕业生", collocationVi: "tuyển dụng sinh viên tốt nghiệp", example: "The firm recruits promising graduates on a yearly basis.", exampleCn: "该公司每年招聘有前途的毕业生。", exampleVi: "Hằng năm, công ty tuyển dụng những sinh viên mới tốt nghiệp đầy triển vọng.", wordFamily: "recruitment (n), recruiter (n)", synonym: "hire, employ", category: "core" },
+            { id: 38, word: "certification", ipa: "/ˌsɜːrtɪfɪˈkeɪʃn/", pos: "noun", chinese: "资格证书, 证明", vietnamese: "Giấy chứng nhận, chứng chỉ", collocation: "professional certification", collocationCn: "专业资格认证", collocationVi: "chứng chỉ chuyên môn", example: "Obtaining accounting certification takes approximately a year.", exampleCn: "获得会计资格认证大约需要一年时间。", exampleVi: "Mất xấp xỉ một năm để có được giấy chứng nhận kế toán.", wordFamily: "certify (v), certified (adj)", synonym: "certificate, credential", category: "core" },
+            { id: 39, word: "occupation", ipa: "/ˌɑːkjuˈpeɪʃn/", pos: "noun", chinese: "职业, 工作", vietnamese: "Nghề nghiệp, công việc", collocation: "choice of occupation", collocationCn: "职业选择", collocationVi: "lựa chọn nghề nghiệp", example: "Journalism is an interesting and challenging occupation.", exampleCn: "新闻业是一项有趣且具有挑战性的职业。", exampleVi: "Làm báo là một nghề thú vị và đầy thử thách.", wordFamily: "occupy (v), occupational (adj)", synonym: "job, profession, career", category: "core" },
+            { id: 40, word: "wage", ipa: "/weɪdʒ/", pos: "noun", chinese: "工资, 薪水", vietnamese: "Tiền lương, tiền công", collocation: "earn higher wages", collocationCn: "赚取更高的工资", collocationVi: "nhận mức lương cao hơn", example: "Workers with formal education may earn higher wages than those without.", exampleCn: "受过正规教育的工人可能比没有受过正规教育的工人赚取更高的工资。", exampleVi: "Người lao động được đào tạo chính quy có thể nhận được mức lương cao hơn.", wordFamily: "wages (n)", synonym: "pay, salary", category: "core" },
+
+            { id: 41, word: "application form", ipa: "/ˌæplɪˈkeɪʃn fɔːrm/", pos: "phrase", chinese: "申请表", vietnamese: "Mẫu đơn xin việc", collocation: "fill out an application form", collocationCn: "填写申请表", collocationVi: "điền vào mẫu đơn xin việc", example: "Please complete the application form carefully.", exampleCn: "请仔细填写申请表。", exampleVi: "Vui lòng hoàn thành mẫu đơn xin việc thật cẩn thận.", category: "basic" },
+            { id: 42, word: "career", ipa: "/kəˈrɪr/", pos: "noun", chinese: "职业, 事业", vietnamese: "Sự nghiệp, nghề nghiệp", collocation: "career opportunity", collocationCn: "职业机会", collocationVi: "cơ hội nghề nghiệp", example: "She has had a successful career in banking.", exampleCn: "她在银行业取得了成功的职业生涯。", exampleVi: "Cô ấy đã có một sự nghiệp thành công trong ngành ngân hàng.", category: "basic" },
+            { id: 43, word: "completion", ipa: "/kəmˈpliːʃn/", pos: "noun", chinese: "完成, 结束", vietnamese: "Sự hoàn thành", collocation: "upon completion of", collocationCn: "在完成...之后", collocationVi: "sau khi hoàn thành", example: "The project is nearing completion.", exampleCn: "该项目即将完成。", exampleVi: "Dự án đang tiến gần đến sự hoàn thành.", category: "basic" },
+            { id: 44, word: "fair", ipa: "/fer/", pos: "adjective", chinese: "公平的, 合理的", vietnamese: "Công bằng, hợp lý", collocation: "fair decision", collocationCn: "公平的决定", collocationVi: "quyết định công bằng", example: "It is important to be fair to all applicants.", exampleCn: "对所有申请人保持公平很重要。", exampleVi: "Rất quan trọng khi đối xử công bằng với tất cả ứng viên.", category: "basic" },
+            { id: 45, word: "graduation", ipa: "/ˌɡrædʒuˈeɪʃn/", pos: "noun", chinese: "毕业", vietnamese: "Sự tốt nghiệp", collocation: "after graduation", collocationCn: "毕业之后", collocationVi: "sau khi tốt nghiệp", example: "He found a job immediately after graduation.", exampleCn: "他毕业后立刻找到了一份工作。", exampleVi: "Anh ấy đã tìm được việc làm ngay sau khi tốt nghiệp.", category: "basic" },
+            { id: 46, word: "in fact", ipa: "/ɪn fækt/", pos: "phrase", chinese: "事实上, 实际上", vietnamese: "Trong thực tế, trên thực tế", collocation: "in fact, it is true", collocationCn: "事实上这是真的", collocationVi: "trên thực tế điều đó là đúng", example: "In fact, she has more experience than required.", exampleCn: "事实上，她的经验比要求的还要多。", exampleVi: "Trên thực tế, cô ấy có nhiều kinh nghiệm hơn mức yêu cầu.", category: "basic" },
+            { id: 47, word: "job fair", ipa: "/dʒɑːb fer/", pos: "phrase", chinese: "招聘会, 就业博览会", vietnamese: "Hội chợ việc làm", collocation: "attend a job fair", collocationCn: "参加招聘会", collocationVi: "tham gia hội chợ việc làm", example: "Many companies set up booths at the job fair.", exampleCn: "许多公司在招聘会上设立了展位。", exampleVi: "Nhiều công ty đã dựng gian hàng tại hội chợ việc làm.", category: "basic" },
+            { id: 48, word: "job offer", ipa: "/dʒɑːb ˈɔːfər/", pos: "phrase", chinese: "工作邀约, 录用通知", vietnamese: "Lời mời làm việc", collocation: "accept a job offer", collocationCn: "接受工作邀约", collocationVi: "chấp nhận lời mời làm việc", example: "She received a great job offer from a tech firm.", exampleCn: "她收到了一家科技公司的优厚工作邀约。", exampleVi: "Cô ấy đã nhận được lời mời làm việc rất tốt từ công ty công nghệ.", category: "basic" },
+            { id: 49, word: "list", ipa: "/lɪst/", pos: "noun / verb", chinese: "列表 / 列出", vietnamese: "Danh sách / Liệt kê", collocation: "list of candidates", collocationCn: "候选人名单", collocationVi: "danh sách ứng viên", example: "Please list your previous employers below.", exampleCn: "请在下方列出您之前的雇主。", exampleVi: "Vui lòng liệt kê các người sử dụng lao động trước đây của bạn bên dưới.", category: "basic" },
+            { id: 50, word: "newcomer", ipa: "/ˈnuːkʌmər/", pos: "noun", chinese: "新来者, 新员工", vietnamese: "Người mới đến, nhân viên mới", collocation: "welcome newcomers", collocationCn: "欢迎新员工", collocationVi: "chào đón nhân viên mới", example: "The manager introduced the newcomer to the team.", exampleCn: "经理向团队介绍了新员工。", exampleVi: "Quản lý đã giới thiệu nhân viên mới với toàn đội.", category: "basic" },
+            { id: 51, word: "part-time", ipa: "/ˌpɑːrt ˈtaɪm/", pos: "adjective", chinese: "兼职的", vietnamese: "Bán thời gian", collocation: "part-time job", collocationCn: "兼职工作", collocationVi: "công việc bán thời gian", example: "He works part-time at a local bookstore.", exampleCn: "他在当地一家书店做兼职。", exampleVi: "Anh ấy làm việc bán thời gian tại một hiệu sách địa phương.", category: "basic" },
+            { id: 52, word: "previous job", ipa: "/ˈpriːviəs dʒɑːb/", pos: "phrase", chinese: "上一份工作", vietnamese: "Công việc trước đây", collocation: "experience from previous job", collocationCn: "上一份工作的经验", collocationVi: "kinh nghiệm từ công việc trước", example: "Her previous job prepared her well for this role.", exampleCn: "她上一份工作为她胜任这个角色做了充分准备。", exampleVi: "Công việc trước đây của cô ấy đã chuẩn bị tốt cho vị trí này.", category: "basic" },
+            { id: 53, word: "secretary", ipa: "/ˈsekrəteri/", pos: "noun", chinese: "秘书", vietnamese: "Thư ký", collocation: "executive secretary", collocationCn: "执行秘书", collocationVi: "thư ký điều hành", example: "The secretary scheduled the meeting for Thursday.", exampleCn: "秘书将会议安排在周四。", exampleVi: "Người thư ký đã lên lịch cuộc họp vào thứ Năm.", category: "basic" },
+            { id: 54, word: "send in", ipa: "/send ɪn/", pos: "phrase", chinese: "提交, 寄出", vietnamese: "Nộp, giao", collocation: "send in an application", collocationCn: "提交申请", collocationVi: "nộp đơn xin việc", example: "Be sure to send in your application before Friday.", exampleCn: "请务必在周五之前提交您的申请。", exampleVi: "Hãy đảm bảo nộp đơn xin việc của bạn trước thứ Sáu.", category: "basic" },
+            { id: 55, word: "tidy", ipa: "/ˈtaɪdi/", pos: "adjective", chinese: "整洁的, 干净 look", vietnamese: "Gọn gàng, ngăn nắp", collocation: "keep tidy", collocationCn: "保持整洁", collocationVi: "giữ gọn gàng", example: "Keep your workstation tidy and organized.", exampleCn: "保持您的工位整洁有序。", exampleVi: "Hãy giữ chỗ làm việc của bạn gọn gàng và ngăn nắp.", category: "basic" },
+            { id: 56, word: "trainee", ipa: "/ˌtreɪˈniː/", pos: "noun", chinese: "实习生, 受训者", vietnamese: "Thực tập sinh, người được đào tạo", collocation: "management trainee", collocationCn: "管理管培生", collocationVi: "thực tập sinh quản lý", example: "The new trainees will start their orientation today.", exampleCn: "新实习生今天将开始岗前培训。", exampleVi: "Các thực tập sinh mới sẽ bắt đầu buổi định hướng hôm nay.", category: "basic" },
+            { id: 57, word: "apply for", ipa: "/əˈplaɪ fɔːr/", pos: "phrase", chinese: "申请", vietnamese: "Ứng tuyển vào", collocation: "apply for a position", collocationCn: "应聘职位", collocationVi: "ứng tuyển vào một vị trí", example: "Hundreds of people applied for the open position.", exampleCn: "数百人申请了这个空缺职位。", exampleVi: "Hàng trăm người đã ứng tuyển vào vị trí còn trống.", category: "basic" },
+            { id: 58, word: "aptitude", ipa: "/ˈæptɪtuːd/", pos: "noun", chinese: "天资, 才能", vietnamese: "Năng khiếu, năng lực", collocation: "aptitude test", collocationCn: "能力倾向测试", collocationVi: "bài kiểm tra năng khiếu", example: "Applicants must pass a mathematical aptitude test.", exampleCn: "申请人必须通过数学能力测试。", exampleVi: "Ứng viên phải vượt qua bài kiểm tra năng khiếu toán học.", category: "basic" },
+            { id: 59, word: "be admitted to", ipa: "/bi ədˈmɪtɪd tuː/", pos: "phrase", chinese: "被录取, 被准许进入", vietnamese: "Được nhận vào", collocation: "be admitted to the company", collocationCn: "被公司录取", collocationVi: "được nhận vào công ty", example: "She was admitted to the prestigious training program.", exampleCn: "她被选入了这个知名的培训项目。", exampleVi: "Cô ấy đã được nhận vào chương trình đào tạo uy tín.", category: "basic" },
+            { id: 60, word: "be advised to do", ipa: "/bi ædˈvaɪzd tuː duː/", pos: "phrase", chinese: "被建议做...", vietnamese: "Được khuyên làm...", collocation: "be advised to apply early", collocationCn: "被建议尽早申请", collocationVi: "được khuyên nên nộp đơn sớm", example: "Applicants are advised to check the deadline.", exampleCn: "建议申请人核对截止日期。", exampleVi: "Các ứng viên được khuyên nên kiểm tra lại thời hạn.", category: "basic" },
+            { id: 61, word: "criteria", ipa: "/kraɪˈtɪriə/", pos: "noun (plural)", chinese: "标准, 条件", vietnamese: "Tiêu chuẩn (số nhiều của criterion)", collocation: "selection criteria", collocationCn: "选拔标准", collocationVi: "tiêu chuẩn lựa chọn", example: "What are the main criteria for hiring?", exampleCn: "招聘的主要标准是什么？", exampleVi: "Các tiêu chuẩn chính để tuyển dụng là gì?", category: "basic" },
+            { id: 62, word: "decade", ipa: "/ˈdekeɪd/", pos: "noun", chinese: "十年, 十年期", vietnamese: "Thập kỷ", collocation: "over a decade", collocationCn: "长达十年以上", collocationVi: "hơn một thập kỷ", example: "He has worked in recruitment for over a decade.", exampleCn: "他在招聘领域工作了十多年。", exampleVi: "Anh ấy đã làm việc trong ngành tuyển dụng hơn một thập kỷ.", category: "basic" },
+            { id: 63, word: "employ", ipa: "/ɪmˈplɔɪ/", pos: "verb", chinese: "雇用, 聘用", vietnamese: "Thuê, mướn", collocation: "employ staff", collocationCn: "雇用员工", collocationVi: "thuê nhân viên", example: "The firm employs over 200 skilled workers.", exampleCn: "该公司雇用着200多名技术工人。", exampleVi: "Công ty thuê hơn 200 công nhân lành nghề.", category: "basic" },
+            { id: 64, word: "insufficient", ipa: "/ˌɪnsəˈfɪʃnt/", pos: "adjective", chinese: "不足的, 不够的", vietnamese: "Không đủ, thiếu", collocation: "insufficient experience", collocationCn: "经验不足", collocationVi: "thiếu kinh nghiệm", example: "His background was rejected due to insufficient experience.", exampleCn: "由于经验不足，他的履历被拒绝了。", exampleVi: "Hồ sơ của anh ấy bị từ chối do không đủ kinh nghiệm.", category: "basic" },
+            { id: 65, word: "minimum", ipa: "/ˈmɪnɪməm/", pos: "noun / adjective", chinese: "最小值 / 最低的", vietnamese: "Mức tối thiểu / Tối thiểu", collocation: "minimum requirement", collocationCn: "最低要求", collocationVi: "yêu cầu tối thiểu", example: "A college degree is the minimum requirement for this position.", exampleCn: "本科学位是该职位的最低要求。", exampleVi: "Bằng đại học là yêu cầu tối thiểu cho vị trí này.", category: "basic" },
+            { id: 66, word: "party", ipa: "/ˈpɑːrti/", pos: "noun", chinese: "派对, 团队, 当事人", vietnamese: "Bữa tiệc, nhóm, tổ chức", collocation: "third party", collocationCn: "第三方", collocationVi: "bên thứ ba", example: "The hiring process was handled by an external party.", exampleCn: "招聘流程由第三方负责处理。", exampleVi: "Quy trình tuyển dụng do một bên thứ ba đảm nhận.", category: "basic" },
+            { id: 67, word: "plentiful", ipa: "/ˈplentɪfl/", pos: "adjective", chinese: "丰富的, 充足的", vietnamese: "Dồi dào, phong phú", collocation: "plentiful opportunities", collocationCn: "丰富的机会", collocationVi: "cơ hội dồi dào", example: "Job opportunities are plentiful in the tech industry.", exampleCn: "科技行业的就业机会非常丰富。", exampleVi: "Cơ hội việc làm rất dồi dào trong ngành công nghệ.", category: "basic" },
+            { id: 68, word: "profession", ipa: "/prəˈfeʃn/", pos: "noun", chinese: "职业, 专业", vietnamese: "Nghề nghiệp", collocation: "legal profession", collocationCn: "法律职业", collocationVi: "ngành nghề luật", example: "She entered the teaching profession five years ago.", exampleCn: "她五年前进入了教师行业。", exampleVi: "Cô ấy bước vào nghề giáo viên năm năm trước.", category: "basic" },
+
+            { id: 69, word: "achieve one's goal", ipa: "/əˈtʃiːv wʌnz ɡoʊl/", pos: "phrase", chinese: "实现目标", vietnamese: "Đạt mục tiêu của ai đó", collocation: "strive to achieve one's goal", collocationCn: "努力实现目标", collocationVi: "nỗ lực đạt mục tiêu", example: "Hard work helped him achieve his goal.", exampleCn: "努力工作帮助他实现了目标。", exampleVi: "Sự chăm chỉ đã giúp anh ấy đạt được mục tiêu của mình.", category: "800" },
+            { id: 70, word: "apprentice", ipa: "/əˈprentɪs/", pos: "noun", chinese: "学徒, 见习生", vietnamese: "Người học việc, tập sự", collocation: "trade apprentice", collocationCn: "技术学徒", collocationVi: "người học việc tay nghề", example: "He worked as an apprentice electrician for two years.", exampleCn: "他当了两年的电工学徒。", exampleVi: "Anh ấy đã làm thợ điện tập sự trong hai năm.", category: "800" },
+            { id: 71, word: "dress formally", ipa: "/dres ˈfɔːrməli/", pos: "phrase", chinese: "着正装", vietnamese: "Ăn mặc trang trọng", collocation: "be required to dress formally", collocationCn: "被要求穿正装", collocationVi: "yêu cầu ăn mặc trang trọng", example: "All candidates must dress formally for the interview.", exampleCn: "所有候选人面试时必须着正装。", exampleVi: "Tất cả các ứng viên phải ăn mặc trang trọng cho cuộc phỏng vấn.", category: "800" },
+            { id: 72, word: "dressed in suit", ipa: "/drest ɪn suːt/", pos: "phrase", chinese: "身穿西装", vietnamese: "Mặc vest, com lê", collocation: "neatly dressed in suit", collocationCn: "穿着整洁的西装", collocationVi: "mặc bộ vest chỉnh tề", example: "The applicant was neatly dressed in a suit.", exampleCn: "求职者穿着一身整洁的西装。", exampleVi: "Ứng viên mặc một bộ vest rất chỉnh tề.", category: "800" },
+            { id: 73, word: "figure out", ipa: "/ˈfɪɡjər aʊt/", pos: "phrase", chinese: "找出, 理解", vietnamese: "Tìm ra, phát hiện ra", collocation: "figure out a solution", collocationCn: "找出解决方案", collocationVi: "tìm ra giải pháp", example: "We need to figure out how to attract top talent.", exampleCn: "我们需要找出如何吸引顶尖人才的方法。", exampleVi: "Chúng ta cần tìm ra cách thu hút nhân tài hàng đầu.", category: "800" },
+            { id: 74, word: "full time work", ipa: "/fʊl taɪm wɜːrk/", pos: "phrase", chinese: "全职工作", vietnamese: "Công việc toàn thời gian", collocation: "look for full time work", collocationCn: "寻找全职工作", collocationVi: "tìm công việc toàn thời gian", example: "She transition from internship to full time work.", exampleCn: "她从实习过渡到了全职工作。", exampleVi: "Cô ấy chuyển từ thực tập sang công việc toàn thời gian.", category: "800" },
+            { id: 75, word: "job opportunity", ipa: "/dʒɑːb ˌɑːpərˈtuːnəti/", pos: "phrase", chinese: "就业机会", vietnamese: "Cơ hội việc làm", collocation: "excellent job opportunity", collocationCn: "极好的就业机会", collocationVi: "cơ hội việc làm tuyệt vời", example: "This fair brings many job opportunities for graduates.", exampleCn: "这次招聘会为毕业生带来了许多就业机会。", exampleVi: "Hội chợ này mang lại nhiều cơ hội việc làm cho sinh viên tốt nghiệp.", category: "800" },
+            { id: 76, word: "job search", ipa: "/dʒɑːb sɜːrtʃ/", pos: "phrase", chinese: "求职, 找工作", vietnamese: "Sự tìm việc làm", collocation: "active job search", collocationCn: "积极求职", collocationVi: "tích cực tìm việc", example: "Online portals have simplified the job search process.", exampleCn: "在线门户网站简化了求职流程。", exampleVi: "Các trang web trực tuyến đã đơn giản hóa quá trình tìm việc.", category: "800" },
+            { id: 77, word: "job seeker", ipa: "/dʒɑːb ˈsiːkər/", pos: "phrase", chinese: "求职者", vietnamese: "Người tìm việc", collocation: "qualified job seeker", collocationCn: "合格的求职者", collocationVi: "người tìm việc đủ năng lực", example: "Job seekers are submitting resumes online.", exampleCn: "求职者们正在在线提交简历。", exampleVi: "Những người tìm việc đang nộp sơ yếu lý lịch trực tuyến.", category: "800" },
+            { id: 78, word: "lay out", ipa: "/leɪ aʊt/", pos: "phrase", chinese: "安排, 展示", vietnamese: "Đặt ra, bày ra", collocation: "lay out expectations", collocationCn: "明确期望", collocationVi: "đặt ra các kỳ vọng", example: "The manager laid out the requirements clearly.", exampleCn: "经理清楚地列出了各项要求。", exampleVi: "Quản lý đã đặt ra các yêu cầu một cách rõ ràng.", category: "800" },
+            { id: 79, word: "letter of recommendation", ipa: "/ˈletər əv ˌrekəmənˈdeɪʃn/", pos: "phrase", chinese: "推荐信", vietnamese: "Thư giới thiệu", collocation: "strong letter of recommendation", collocationCn: "份有力推荐信", collocationVi: "thư giới thiệu có trọng lượng", example: "His professor wrote a glowing letter of recommendation.", exampleCn: "他的教授为他写了一封极力推荐的推荐信。", exampleVi: "Giáo sư của anh ấy đã viết một bức thư giới thiệu rất tốt.", category: "800" },
+            { id: 80, word: "pay raise", ipa: "/peɪ reɪz/", pos: "phrase", chinese: "加薪", vietnamese: "Sự tăng lương", collocation: "deserve a pay raise", collocationCn: "应得加薪", collocationVi: "xứng đáng được tăng lương", example: "She asked for a pay raise after a successful year.", exampleCn: "在一年的出色表现后，她提出了加薪要求。", exampleVi: "Cô ấy đã xin tăng lương sau một năm làm việc thành công.", category: "800" },
+            { id: 81, word: "practical experience", ipa: "/ˈpræktɪkl ɪkˈspɪriəns/", pos: "phrase", chinese: "实际经验", vietnamese: "Kinh nghiệm thực tế", collocation: "gain practical experience", collocationCn: "积累实际经验", collocationVi: "tích lũy kinh nghiệm thực tế", example: "Internships offer valuable practical experience.", exampleCn: "实习能提供宝贵的实际经验。", exampleVi: "Các kỳ thực tập mang lại kinh nghiệm thực tế quý báu.", category: "800" },
+            { id: 82, word: "proof of employment", ipa: "/pruːf əv ɪmˈplɔɪmənt/", pos: "phrase", chinese: "在职证明", vietnamese: "Bằng chứng công việc", collocation: "request proof of employment", collocationCn: "要求在职证明", collocationVi: "yêu cầu bằng chứng làm việc", example: "The bank requested proof of employment for the loan.", exampleCn: "银行要求提供在职证明以办理贷款。", exampleVi: "Ngân hàng đã yêu cầu bằng chứng công việc để làm khoản vay.", category: "800" },
+            { id: 83, word: "reapply", ipa: "/ˌriːəˈplaɪ/", pos: "verb", chinese: "重新申请", vietnamese: "Ứng tuyển lại", collocation: "reapply for the position", collocationCn: "重新申请该职位", collocationVi: "nộp đơn ứng tuyển lại vị trí", example: "You may reapply for the role after six months.", exampleCn: "六个月后您可以重新申请该职位。", exampleVi: "Bạn có thể ứng tuyển lại vị trí này sau 6 tháng.", category: "800" },
+            { id: 84, word: "recommendation letter", ipa: "/ˌrekəmənˈdeɪʃn ˈletər/", pos: "phrase", chinese: "推荐信", vietnamese: "Thư tiến cử", collocation: "attach a recommendation letter", collocationCn: "附上推荐信", collocationVi: "đính kèm thư giới thiệu", example: "Please attach your recommendation letter to the email.", exampleCn: "请在邮件中附上您的推荐信。", exampleVi: "Vui lòng đính kèm thư giới thiệu vào email.", category: "800" },
+            { id: 85, word: "reference letter", ipa: "/ˈrefərəns ˈletər/", pos: "phrase", chinese: "推荐信", vietnamese: "Thư xác nhận, giới thiệu", collocation: "submit a reference letter", collocationCn: "提交推荐信", collocationVi: "nộp thư giới thiệu", example: "A reference letter from your previous employer is needed.", exampleCn: "需要提供上一任雇主的推荐信。", exampleVi: "Cần có thư giới thiệu từ người quản lý trước đây của bạn.", category: "800" },
+            { id: 86, word: "send off to", ipa: "/send ɔːf tuː/", pos: "phrase", chinese: "寄出到...", vietnamese: "Gửi tới", collocation: "send off to HR", collocationCn: "发送给人力资源部", collocationVi: "gửi tới phòng nhân sự", example: "Send off your files to the hiring department today.", exampleCn: "请今天将您的文件发送给招聘部门。", exampleVi: "Hãy gửi tài liệu của bạn tới bộ phận tuyển dụng ngay hôm nay.", category: "800" },
+            { id: 87, word: "set up an interview", ipa: "/set ʌp ən ˈɪntərvjuː/", pos: "phrase", chinese: "安排面试", vietnamese: "Sắp xếp một cuộc phỏng vấn", collocation: "set up a final interview", collocationCn: "安排最终面试", collocationVi: "sắp xếp phỏng vấn vòng cuối", example: "HR called to set up an interview for Monday.", exampleCn: "人力资源部打电话安排在周一进行面试。", exampleVi: "Phòng nhân sự đã gọi điện để sắp xếp một cuộc phỏng vấn vào thứ Hai.", category: "800" },
+            { id: 88, word: "take an examination", ipa: "/teɪk ən ɪɡˌzæmɪˈneɪʃn/", pos: "phrase", chinese: "参加考试", vietnamese: "Làm bài kiểm tra", collocation: "take a language examination", collocationCn: "参加语言考试", collocationVi: "làm bài kiểm tra ngoại ngữ", example: "Candidates must take a competency examination.", exampleCn: "候选人必须参加胜任力考试。", exampleVi: "Các ứng viên phải làm một bài kiểm tra năng lực.", category: "800" },
+            { id: 89, word: "training center", ipa: "/ˈtreɪnɪŋ ˈsentər/", pos: "phrase", chinese: "培训中心", vietnamese: "Trung tâm đào tạo", collocation: "corporate training center", collocationCn: "企业培训中心", collocationVi: "trung tâm đào tạo doanh nghiệp", example: "New hires reported to the training center.", exampleCn: "新员工到培训中心报到。", exampleVi: "Nhân viên mới đã có mặt tại trung tâm đào tạo.", category: "800" },
+            { id: 90, word: "waiting room", ipa: "/ˈweɪtɪŋ ruːm/", pos: "phrase", chinese: "等候室, 候诊室", vietnamese: "Phòng chờ", collocation: "sit in the waiting room", collocationCn: "坐在等候室", collocationVi: "ngồi ở phòng chờ", example: "Applicants waited patiently in the waiting room.", exampleCn: "求职者们在等候室里耐心等待。", exampleVi: "Các ứng viên đã nhẫn nại ngồi chờ trong phòng chờ.", category: "800" },
+            { id: 91, word: "well-educated", ipa: "/ˌwel ˈedʒukeɪtɪd/", pos: "adjective", chinese: "受过良好教育的", vietnamese: "Có học thức, đào tạo tốt", collocation: "well-educated candidate", collocationCn: "受过良好教育的候选人", collocationVi: "ứng viên có học thức tốt", example: "The company seeks well-educated professionals.", exampleCn: "公司寻找受过良好教育的高素质专业人士。", exampleVi: "Công ty tìm kiếm những chuyên gia có học thức tốt.", category: "800" },
+            { id: 92, word: "workstation", ipa: "/ˈwɜːrksteɪʃn/", pos: "noun", chinese: "工位, 工作站", vietnamese: "Chỗ ngồi làm việc", collocation: "assigned workstation", collocationCn: "指定的工位", collocationVi: "chỗ ngồi làm việc được phân", example: "Each worker was assigned a modern workstation.", exampleCn: "每位员工都被分配了一个现代化的工位。", exampleVi: "Mỗi công nhân đều được chia một chỗ ngồi làm việc hiện đại.", category: "800" },
+            { id: 93, word: "zealous", ipa: "/ˈzeləs/", pos: "adjective", chinese: "热心的, 狂热的", vietnamese: "Hăng hái, nhiệt huyết", collocation: "zealous worker", collocationCn: "热心的员工", collocationVi: "nhân viên nhiệt huyết", example: "She is a zealous advocate for employee rights.", exampleCn: "她是员工权益的热心倡导者。", exampleVi: "Cô ấy là một người nhiệt huyết đấu tranh cho quyền lợi nhân viên.", category: "800" },
+            { id: 94, word: "cover letter", ipa: "/ˈkʌvər ˈletər/", pos: "phrase", chinese: "求职信", vietnamese: "Đơn xin việc, thư xin việc", collocation: "attach a cover letter", collocationCn: "附上求职信", collocationVi: "đính kèm thư xin việc", example: "Send your CV along with a cover letter.", exampleCn: "请将您的简历与求职信一起发送。", exampleVi: "Hãy gửi CV cùng với thư xin việc của bạn.", category: "800" },
+            { id: 95, word: "devoted", ipa: "/dɪˈvoʊtɪd/", pos: "adjective", chinese: "全心全意的, 奉献的", vietnamese: "Hết lòng, tận tâm", collocation: "devoted employee", collocationCn: "忠诚奉献的员工", collocationVi: "nhân viên tận tâm", example: "He is devoted to his career in journalism.", exampleCn: "他全心全意投入于新闻事业。", exampleVi: "Anh ấy hết lòng với sự nghiệp làm báo của mình.", category: "800" },
+            { id: 96, word: "energetic", ipa: "/ˌenərˈdʒetɪk/", pos: "adjective", chinese: "精力充沛的", vietnamese: "Tràn đầy năng lượng", collocation: "energetic team", collocationCn: "充满活力的团队", collocationVi: "đội ngũ năng động", example: "We are looking for an energetic sales manager.", exampleCn: "我们正在寻找一位精力充沛的销售经理。", exampleVi: "Chúng tôi đang tìm kiếm một quản lý kinh doanh tràn đầy năng lượng.", category: "800" },
+            { id: 97, word: "enthusiastic", ipa: "/ɪnˌθuːziˈæstɪk/", pos: "adjective", chinese: "热情的", vietnamese: "Nhiệt tình, hăng hái", collocation: "be enthusiastic about", collocationCn: "对...充满热情", collocationVi: "nhiệt tình với", example: "The staff was enthusiastic about the project.", exampleCn: "员工对该项目充满热情。", exampleVi: "Các nhân viên rất nhiệt tình với dự án.", category: "800" },
+            { id: 98, word: "excel", ipa: "/ɪkˈsel/", pos: "verb", chinese: "擅长, 出众", vietnamese: "Trội hơn, xuất sắc hơn", collocation: "excel in management", collocationCn: "在管理方面表现出色", collocationVi: "xuất sắc trong quản lý", example: "She excels in customer relations.", exampleCn: "她在客户关系方面非常擅长。", exampleVi: "Cô ấy vượt trội trong mảng quan hệ khách hàng.", category: "800" },
+            { id: 99, word: "exclude", ipa: "/ɪkˈskluːd/", pos: "verb", chinese: "排除, 不包括", vietnamese: "Ngoại trừ, không bao gồm", collocation: "exclude from candidate list", collocationCn: "从候选人名单中排除", collocationVi: "loại khỏi danh sách ứng viên", example: "Incomplete applications will be excluded.", exampleCn: "不完整的申请将被排除在外。", exampleVi: "Những hồ sơ không đầy đủ sẽ bị loại bỏ.", category: "800" },
+            { id: 100, word: "fluently", ipa: "/ˈfluːəntli/", pos: "adverb", chinese: "流利地", vietnamese: "Một cách trôi chảy", collocation: "speak English fluently", collocationCn: "流利地讲英语", collocationVi: "nói tiếng Anh trôi chảy", example: "Applicants must be able to speak English fluently.", exampleCn: "申请人必须能够流利地讲英语。", exampleVi: "Ứng viên phải có khả năng nói tiếng Anh trôi chảy.", category: "800" },
+            { id: 101, word: "get through", ipa: "/ɡet θruː/", pos: "phrase", chinese: "通过, 穿过", vietnamese: "Vượt qua, đỗ", collocation: "get through the screening", collocationCn: "通过筛选", collocationVi: "vượt qua vòng sàng lọc", example: "Only ten applicants got through to the final round.", exampleCn: "只有十名申请人进入了最后一轮。", exampleVi: "Chỉ có mười ứng viên vượt qua vào vòng cuối cùng.", category: "800" },
+            { id: 102, word: "match", ipa: "/mætʃ/", pos: "verb / noun", chinese: "匹配 / 比赛", vietnamese: "Hợp với, xứng với", collocation: "match the requirements", collocationCn: "符合要求", collocationVi: "phù hợp với yêu cầu", example: "Your skills match our requirements perfectly.", exampleCn: "您的技能完全符合我们的要求。", exampleVi: "Kỹ năng của bạn hoàn toàn phù hợp với yêu cầu của chúng tôi.", category: "800" },
+            { id: 103, word: "necessity", ipa: "/nəˈsesəti/", pos: "noun", chinese: "必要性, 必需品", vietnamese: "Sự cần thiết, điều bắt buộc", collocation: "absolute necessity", collocationCn: "绝对必要", collocationVi: "điều cực kỳ cần thiết", example: "Computer literacy is an absolute necessity.", exampleCn: "掌握计算机技能是绝对必要的。", exampleVi: "Thành thạo máy tính là một điều cực kỳ cần thiết.", category: "800" },
+            { id: 104, word: "qualification", ipa: "/ˌkwɑːlɪfɪˈkeɪʃn/", pos: "noun", chinese: "资格, 资历", vietnamese: "Năng lực chuyên môn, bằng cấp", collocation: "academic qualification", collocationCn: "学历资格", collocationVi: "bằng cấp học vấn", example: "He has the necessary qualifications for the post.", exampleCn: "他具备该职位所需的资格。", exampleVi: "Anh ấy có đủ bằng cấp chuyên môn cần thiết cho vị trí này.", category: "800" },
+            { id: 105, word: "relevant", ipa: "/ˈreləvənt/", pos: "adjective", chinese: "相关的, 贴切的", vietnamese: "Có liên quan, thích hợp", collocation: "relevant experience", collocationCn: "相关经验", collocationVi: "kinh nghiệm có liên quan", example: "Please include all relevant work experience.", exampleCn: "请包含所有相关的工作经验。", exampleVi: "Vui lòng ghi thêm tất cả kinh nghiệm làm việc có liên quan.", category: "800" },
+            { id: 106, word: "sign up for", ipa: "/saɪn ʌp fɔːr/", pos: "phrase", chinese: "报名, 注册", vietnamese: "Đăng ký", collocation: "sign up for a workshop", collocationCn: "报名参加研讨会", collocationVi: "đăng ký tham gia hội thảo", example: "Over 50 people signed up for the job seminar.", exampleCn: "50多人报名参加了求职研讨会。", exampleVi: "Hơn 50 người đã đăng ký tham gia buổi hội thảo việc làm.", category: "800" },
+            { id: 107, word: "talented", ipa: "/ˈtæləntɪd/", pos: "adjective", chinese: "有才能的", vietnamese: "Có tài, tài năng", collocation: "talented individual", collocationCn: "有才能的人", collocationVi: "cá nhân tài năng", example: "We actively recruit talented individuals.", exampleCn: "我们积极招聘有才能的人士。", exampleVi: "Chúng tôi tích cực tuyển dụng những cá nhân có tài năng.", category: "800" },
+            { id: 108, word: "visiting", ipa: "/ˈvɪzɪtɪŋ/", pos: "adjective / noun", chinese: "访问的 / 参观", vietnamese: "Thăm viếng, tham quan", collocation: "visiting professor", collocationCn: "客座教授", collocationVi: "giáo sư thỉnh giảng", example: "She is a visiting consultant at the hospital.", exampleCn: "她是该医院的客座顾问。", exampleVi: "Cô ấy là cố vấn thỉnh giảng tại bệnh viện.", category: "800" },
+            { id: 109, word: "workforce", ipa: "/ˈwɜːrkfɔːrs/", pos: "noun", chinese: "劳动力, 员工总数", vietnamese: "Lực lượng lao động", collocation: "skilled workforce", collocationCn: "熟练劳动力", collocationVi: "lực lượng lao động có kỹ năng", example: "The company expanded its global workforce.", exampleCn: "该公司扩大了其全球员工队伍。", exampleVi: "Công ty đã mở rộng lực lượng lao động toàn cầu của mình.", category: "800" },
+            { id: 110, word: "address the audience", ipa: "/əˈdres ðə ˈɔːdiəns/", pos: "phrase", chinese: "向听众致辞", vietnamese: "Giao lưu, phát biểu với khán giả", collocation: "briefly address the audience", collocationCn: "向听众简短致辞", collocationVi: "phát biểu ngắn gọn với khán giả", example: "The recruiter addressed the audience before the test.", exampleCn: "招聘人员在测试前向听众致辞。", exampleVi: "Người tuyển dụng đã phát biểu với khán giả trước giờ kiểm tra.", category: "800" },
+            { id: 111, word: "be influenced by appearance", ipa: "/bi ˈɪnfluənst baɪ əˈpɪrəns/", pos: "phrase", chinese: "受外表影响", vietnamese: "Bị chi phối bởi vẻ ngoài", collocation: "should not be influenced by appearance", collocationCn: "不应受外表影响", collocationVi: "không nên bị chi phối bởi vẻ ngoài", example: "Interviewers should not be influenced by appearance.", exampleCn: "面试官不应受求职者外表的影响。", exampleVi: "Người phỏng vấn không nên bị chi phối bởi vẻ bề ngoài.", category: "800" },
+            { id: 112, word: "bilingual", ipa: "/ˌbaɪˈlɪŋɡwəl/", pos: "adjective", chinese: "双语的", vietnamese: "Song ngữ", collocation: "bilingual secretary", collocationCn: "双语秘书", collocationVi: "thư ký song ngữ", example: "The position requires a bilingual candidate.", exampleCn: "该职位需要懂双语的候选人。", exampleVi: "Vị trí này yêu cầu một ứng viên thạo song ngữ.", category: "800" },
+            { id: 113, word: "curriculum vitae", ipa: "/kəˈrɪkjələm ˈviːtaɪ/", pos: "phrase", chinese: "履历表, CV", vietnamese: "Sơ yếu lý lịch, CV", collocation: "send curriculum vitae", collocationCn: "发送履历表", collocationVi: "gửi sơ yếu lý lịch", example: "Attach your updated curriculum vitae.", exampleCn: "请附上您更新后的履历表。", exampleVi: "Hãy đính kèm sơ yếu lý lịch mới nhất của bạn.", category: "800" },
+            { id: 114, word: "diploma", ipa: "/dɪˈploʊmə/", pos: "noun", chinese: "文凭, 毕业证书", vietnamese: "Bằng tốt nghiệp", collocation: "high school diploma", collocationCn: "高中文凭", collocationVi: "bằng tốt nghiệp cấp 3", example: "A high school diploma is mandatory.", exampleCn: "高中文凭是强制要求的。", exampleVi: "Bằng tốt nghiệp cấp 3 là bắt buộc.", category: "800" },
+            { id: 115, word: "endurance", ipa: "/ɪnˈdʊrəns/", pos: "noun", chinese: "忍耐力, 耐力", vietnamese: "Sự chịu đựng, khả năng chịu đựng", collocation: "test of endurance", collocationCn: "耐力测试", collocationVi: "kiểm tra sức chịu đựng", example: "The job requires great physical endurance.", exampleCn: "这项工作需要极强体力耐力。", exampleVi: "Công việc này đòi hỏi khả năng chịu đựng thể lực lớn.", category: "800" },
+            { id: 116, word: "external", ipa: "/ɪkˈstɜːrnl/", pos: "adjective", chinese: "外部的", vietnamese: "Bên ngoài", collocation: "external auditor", collocationCn: "外部审计师", collocationVi: "kiểm toán viên bên ngoài", example: "The screening will be conducted by an external consultant.", exampleCn: "筛选将由外部顾问进行。", exampleVi: "Việc sàng lọc sẽ do một cố vấn bên ngoài thực hiện.", category: "800" },
+            { id: 117, word: "fluency", ipa: "/ˈfluːənsi/", pos: "noun", chinese: "流利, 流畅", vietnamese: "Sự lưu loát, trôi chảy", collocation: "fluency in English", collocationCn: "英语流利", collocationVi: "sự trôi chảy tiếng Anh", example: "Fluency in French is an advantage.", exampleCn: "精通法语是一项优势。", exampleVi: "Sự lưu loát tiếng Pháp là một lợi thế.", category: "800" },
+            { id: 118, word: "fluent in", ipa: "/ˈfluːənt ɪn/", pos: "phrase", chinese: "精通, 流利", vietnamese: "Thành thạo về", collocation: "fluent in Spanish", collocationCn: "精通西班牙语", collocationVi: "thành thạo tiếng Tây Ban Nha", example: "She is fluent in three languages.", exampleCn: "她精通三种语言。", exampleVi: "Cô ấy thành thạo ba ngôn ngữ.", category: "800" },
+            { id: 119, word: "human resources", ipa: "/ˈhjuːmən rɪˈsɔːrsɪz/", pos: "phrase", chinese: "人力资源, 人事部", vietnamese: "Quản lý nhân lực, nhân sự", collocation: "human resources department", collocationCn: "人力资源部", collocationVi: "phòng nhân sự", example: "Contact human resources for leave policies.", exampleCn: "关于请假政策请联系人力资源部。", exampleVi: "Hãy liên hệ phòng nhân sự để biết chính sách nghỉ phép.", category: "800" },
+            { id: 120, word: "improperly", ipa: "/ɪmˈprɑːpərli/", pos: "adverb", chinese: "不当地, 错误地", vietnamese: "Không đúng cách, không thích hợp", collocation: "handled improperly", collocationCn: "处理不当", collocationVi: "xử lý không đúng cách", example: "The files were filed improperly.", exampleCn: "这些文件归档不当。", exampleVi: "Các tệp tài liệu đã được lưu trữ không đúng cách.", category: "800" },
+            { id: 121, word: "in a positive manner", ipa: "/ɪn ə ˈpɑːzətɪv ˈmænər/", pos: "phrase", chinese: "以积极的方式", vietnamese: "Theo một cách tích cực", collocation: "respond in a positive manner", collocationCn: "以积极的方式回应", collocationVi: "phản hồi theo cách tích cực", example: "Always interact with colleagues in a positive manner.", exampleCn: "始终以积极的方式与同事互动。", exampleVi: "Luôn tương tác với đồng nghiệp theo một cách tích cực.", category: "800" },
+            { id: 122, word: "in the field of", ipa: "/ɪn ðə fiːld əv/", pos: "phrase", chinese: "在...领域", vietnamese: "Trong lĩnh vực", collocation: "in the field of education", collocationCn: "在教育领域", collocationVi: "trong lĩnh vực giáo dục", example: "He is an expert in the field of recruitment.", exampleCn: "他是招聘领域的专家。", exampleVi: "Anh ấy là chuyên gia trong lĩnh vực tuyển dụng.", category: "800" },
+            { id: 123, word: "inexperience", ipa: "/ˌɪnɪkˈspɪriəns/", pos: "noun", chinese: "缺乏经验", vietnamese: "Sự thiếu kinh nghiệm", collocation: "due to inexperience", collocationCn: "由于经验不足", collocationVi: "do thiếu kinh nghiệm", example: "Her mistakes were due to youth and inexperience.", exampleCn: "她的错误是由于年轻和缺乏经验造成的。", exampleVi: "Sai sót của cô ấy là do tuổi trẻ và thiếu kinh nghiệm.", category: "800" },
+            { id: 124, word: "lack confidence", ipa: "/læk ˈkɑːnfɪdəns/", pos: "phrase", chinese: "缺乏自信", vietnamese: "Thiếu sự tự tin", collocation: "tend to lack confidence", collocationCn: "容易缺乏自信", collocationVi: "có xu hướng thiếu tự tin", example: "Do not lack confidence during your interview.", exampleCn: "在面试过程中不要缺乏自信。", exampleVi: "Đừng thiếu sự tự tin trong suốt buổi phỏng vấn.", category: "800" },
+            { id: 125, word: "make A a regular habit", ipa: "/meɪk A ə ˈreɡjələr ˈhæbɪt/", pos: "phrase", chinese: "把A养成习惯", vietnamese: "Biến A thành thói quen thường xuyên", collocation: "make learning a regular habit", collocationCn: "把学习养成习惯", collocationVi: "biến việc học thành thói quen", example: "Make reading news a regular habit.", exampleCn: "把阅读新闻养成日常习惯。", exampleVi: "Hãy biến việc đọc tin tức thành một thói quen thường xuyên.", category: "800" },
+            { id: 126, word: "make a commitment to", ipa: "/meɪk ə kəˈmɪtmənt tuː/", pos: "phrase", chinese: "对...作出承诺", vietnamese: "Đưa ra cam kết, gắn bó với", collocation: "make a commitment to work", collocationCn: "对工作做出承诺", collocationVi: "cam kết với công việc", example: "He made a commitment to stay with the company.", exampleCn: "他承诺留在公司。", exampleVi: "Anh ấy đã đưa ra cam kết gắn bó với công ty.", category: "800" },
+            { id: 127, word: "make a point of -ing", ipa: "/meɪk ə pɔɪnt əv -ɪŋ/", pos: "phrase", chinese: "特别注意, 坚持", vietnamese: "Quan tâm, tận tâm với", collocation: "make a point of arriving early", collocationCn: "坚持早到", collocationVi: "chú ý đến sớm", example: "She makes a point of being punctual.", exampleCn: "她特别注意守时。", exampleVi: "Cô ấy luôn rất quan tâm đến việc đúng giờ.", category: "800" },
+            { id: 128, word: "manpower", ipa: "/ˈmænpaʊər/", pos: "noun", chinese: "人力, 劳动力", vietnamese: "Nhân lực", collocation: "lack of manpower", collocationCn: "人力不足", collocationVi: "sự thiếu hụt nhân lực", example: "The project requires additional manpower.", exampleCn: "该项目需要额外的人力。", exampleVi: "Dự án yêu cầu bổ sung thêm nhân lực.", category: "800" },
+            { id: 129, word: "master's degree", ipa: "/ˈmæstərz dɪˈɡriː/", pos: "phrase", chinese: "硕士学位", vietnamese: "Bằng thạc sĩ", collocation: "hold a master's degree", collocationCn: "拥有硕士学位", collocationVi: "sở hữu bằng thạc sĩ", example: "She holds a master's degree in economics.", exampleCn: "她拥有经济学硕士学位。", exampleVi: "Cô ấy có bằng thạc sĩ về kinh tế học.", category: "800" },
+            { id: 130, word: "novice", ipa: "/ˈnɑːvɪs/", pos: "noun", chinese: "新手, 初学者", vietnamese: "Người học việc, tập sự", collocation: "complete novice", collocationCn: "完全的新手", collocationVi: "người hoàn toàn mới", example: "He is a novice in computer programming.", exampleCn: "他是计算机编程方面的初学者。", exampleVi: "Anh ấy là người mới học việc trong mảng lập trình.", category: "800" },
+            { id: 131, word: "paycheck", ipa: "/ˈpeɪtʃek/", pos: "noun", chinese: "工资, 付薪支票", vietnamese: "Tiền lương, tiền công", collocation: "weekly paycheck", collocationCn: "周薪", collocationVi: "tiền lương hằng tuần", example: "Employees receive their paycheck biweekly.", exampleCn: "员工每两周领取一次工资。", exampleVi: "Nhân viên nhận tiền lương của họ hai tuần một lần.", category: "800" },
+            { id: 132, word: "self-motivation", ipa: "/ˌself ˌmoʊtɪˈveɪʃn/", pos: "noun", chinese: "自我激励, 自驱力", vietnamese: "Sự tự tạo động lực", collocation: "high self-motivation", collocationCn: "高度的自驱力", collocationVi: "sự tự tạo động lực cao", example: "Self-motivation is crucial for remote work.", exampleCn: "自我激励对于远程工作至关重要。", exampleVi: "Sự tự tạo động lực là rất quan trọng khi làm việc từ xa.", category: "800" },
+            { id: 133, word: "send a notification", ipa: "/send ə ˌnoʊtɪfɪˈkeɪʃn/", pos: "phrase", chinese: "发送通知", vietnamese: "Gửi thông báo", collocation: "send an official notification", collocationCn: "发送正式通知", collocationVi: "gửi thông báo正 式", example: "HR will send a notification to shortlisted candidates.", exampleCn: "人力资源部将向入围候选人发送通知。", exampleVi: "Phòng nhân sự sẽ gửi thông báo đến các ứng viên rút gọn.", category: "800" },
+
+            { id: 134, word: "vacancy", ipa: "/ˈveɪkənsi/", pos: "noun", chinese: "职位空缺", vietnamese: "Vị trí còn trống", collocation: "fill a vacancy", collocationCn: "填补职位空缺", collocationVi: "lấp đầy vị trí trống", example: "We currently have a vacancy for an accountant.", exampleCn: "我们目前有一个会计职位空缺。", exampleVi: "Hiện tại chúng tôi đang có một vị trí kế toán còn trống.", category: "900" },
+            { id: 135, word: "wanted", ipa: "/ˈwɑːntɪd/", pos: "adjective", chinese: "招聘的, 被需要的", vietnamese: "Được cần đến, yêu cầu tuyển", collocation: "help wanted", collocationCn: "诚聘英才", collocationVi: "tuyển dụng nhân sự", example: "Help wanted signs were posted outside.", exampleCn: "外面张贴着诚聘英才的告示。", exampleVi: "Biển thông báo tuyển dụng đã được dán bên ngoài.", category: "900" },
+            { id: 136, word: "work history", ipa: "/wɜːrk ˈhɪstri/", pos: "phrase", chinese: "工作经历", vietnamese: "Lịch sử làm việc", collocation: "solid work history", collocationCn: "扎实的工作经历", collocationVi: "lịch sử làm việc vững vàng", example: "She has an impressive work history in finance.", exampleCn: "她在金融领域有着令人印象深刻的工作经历。", exampleVi: "Cô ấy có một lịch sử làm việc rất ấn tượng trong ngành tài chính.", category: "900" },
+            { id: 137, word: "credential", ipa: "/krəˈdenʃl/", pos: "noun", chinese: "凭证, 资历证明", vietnamese: "Thông tin xác thực, bằng cấp", collocation: "academic credentials", collocationCn: "学历证书", collocationVi: "bằng cấp chứng nhận学 问", example: "She has impressive academic credentials.", exampleCn: "她拥有令人印象深刻的学历背景。", exampleVi: "Cô ấy có những bằng cấp chứng nhận học vấn rất ấn tượng.", category: "900" },
+            { id: 138, word: "firsthand", ipa: "/ˌfɜːrstˈhænd/", pos: "adjective / adverb", chinese: "第一手的, 直接的", vietnamese: "Trực tiếp, mắt thấy tai nghe", collocation: "firsthand experience", collocationCn: "亲身经验", collocationVi: "kinh nghiệm thực tế trực tiếp", example: "He gained firsthand experience in marketing.", exampleCn: "他获得了市场营销的第一手经验。", exampleVi: "Anh ấy đã tích lũy được kinh nghiệm thực tế trực tiếp trong mảng tiếp thị.", category: "900" },
+            { id: 139, word: "hiring committee", ipa: "/ˈhaɪərɪŋ kəˈmɪti/", pos: "phrase", chinese: "招聘委员会", vietnamese: "Ủy ban tuyển dụng", collocation: "convene the hiring committee", collocationCn: "召开招聘委员会", collocationVi: "triệu tập ủy ban tuyển dụng", example: "The hiring committee reviewed all applicants.", exampleCn: "招聘委员会审查了所有申请人。", exampleVi: "Ủy ban tuyển dụng đã xem xét tất cả ứng viên.", category: "900" },
+            { id: 140, word: "not to mention", ipa: "/nɑːt tuː ˈmenʃn/", pos: "phrase", chinese: "更不用说, 何况", vietnamese: "Không đề cập đến, chưa kể", collocation: "skillful, not to mention dedicated", collocationCn: "熟练更不用说专注", collocationVi: "khéo léo chưa kể tận tâm", example: "He has experience, not to mention great enthusiasm.", exampleCn: "他有经验，更不用说极大的热情了。", exampleVi: "Anh ấy có kinh nghiệm, chưa kể đến sự nhiệt tình rất lớn.", category: "900" },
+            { id: 141, word: "on occasion", ipa: "/ɑːn əˈkeɪʒn/", pos: "phrase", chinese: "偶尔, 有时", vietnamese: "Nhân dịp, đôi khi", collocation: "travel on occasion", collocationCn: "偶尔出差", collocationVi: "đôi khi đi công tác", example: "She works late on occasion.", exampleCn: "她偶尔加班。", exampleVi: "Đôi khi cô ấy làm việc muộn.", category: "900" },
+            { id: 142, word: "overqualified", ipa: "/ˌoʊvərˈkwɑːlɪfaɪd/", pos: "adjective", chinese: "资历过高的", vietnamese: "Có thừa năng lực, trình độ quá cao", collocation: "deemed overqualified", collocationCn: "被认为资历过高", collocationVi: "bị cho là quá thừa năng lực", example: "They felt he was overqualified for the entry-level job.", exampleCn: "他们觉得他对于这个初级职位来说资历过高了。", exampleVi: "Họ cảm thấy anh ấy quá thừa năng lực cho công việc sơ cấp này.", category: "900" },
+            { id: 143, word: "screening", ipa: "/ˈskriːnɪŋ/", pos: "noun", chinese: "筛选, 审查", vietnamese: "Sự sàng lọc, phân loại", collocation: "initial screening", collocationCn: "初步筛选", collocationVi: "sàng lọc ban đầu", example: "Only candidate passing the screening will be interviewed.", exampleCn: "只有通过筛选的候选人才会接受面试。", exampleVi: "Chỉ ứng viên vượt qua vòng sàng lọc mới được phỏng vấn.", category: "900" },
+            { id: 144, word: "lag", ipa: "/læɡ/", pos: "verb / noun", chinese: "滞后, 落后", vietnamese: "Chậm trễ, tụt hậu", collocation: "lag behind competitors", collocationCn: "落后于竞争对手", collocationVi: "tụt hậu so với đối thủ", example: "Our hiring process lags behind our rivals.", exampleCn: "我们的招聘流程落后于竞争对手。", exampleVi: "Quy trình tuyển dụng của chúng tôi bị chậm trễ so với các đối thủ.", category: "900" },
+            { id: 145, word: "on the waiting list", ipa: "/ɑːn ðə ˈweɪtɪŋ lɪst/", pos: "phrase", chinese: "在候补名单上", vietnamese: "Trong danh sách chờ", collocation: "be placed on the waiting list", collocationCn: "被列入候补名单", collocationVi: "được đưa vào danh sách chờ", example: "His name was put on the waiting list.", exampleCn: "他的名字被列入了候补名单。", exampleVi: "Tên của anh ấy đã được đưa vào danh sách chờ.", category: "900" },
+            { id: 146, word: "oriented", ipa: "/ˈɔːrientɪd/", pos: "adjective", chinese: "以...为导向的", vietnamese: "Được định hướng", collocation: "detail-oriented", collocationCn: "注重细节的", collocationVi: "định hướng chú trọng chi tiết", example: "We need a detail-oriented person for accounting.", exampleCn: "会计岗位需要一个注重细节的人。", exampleVi: "Chúng tôi cần một người chú trọng chi tiết cho ngành kế toán.", category: "900" },
+            { id: 147, word: "pertaining to", ipa: "/pərˈteɪnɪŋ tuː/", pos: "phrase", chinese: "与...有关的", vietnamese: "Gắn liền, đi đôi với, liên quan", collocation: "documents pertaining to employment", collocationCn: "与雇用有关的文件", collocationVi: "tài liệu liên quan đến tuyển dụng", example: "Submit all documents pertaining to your experience.", exampleCn: "提交与您的经验有关的所有文件。", exampleVi: "Hãy nộp tất cả tài liệu liên quan đến kinh nghiệm của bạn.", category: "900" },
+            { id: 148, word: "questionably", ipa: "/ˈkwestʃənəbli/", pos: "adverb", chinese: "可疑地", vietnamese: "Đáng ngờ, có vấn đề", collocation: "acted questionably", collocationCn: "行为可疑", collocationVi: "hành động đáng ngờ", example: "The resume details were questionably accurate.", exampleCn: "简历的细节准确性可疑。", exampleVi: "Các chi tiết trong sơ yếu lý lịch có phần đáng ngờ về tính chính xác.", category: "900" },
+            { id: 149, word: "regularity", ipa: "/ˌreɡjuˈlærəti/", pos: "noun", chinese: "定期, 规律性", vietnamese: "Sự đều đặn, thường xuyên", collocation: "with regularity", collocationCn: "有规律地", collocationVi: "một cách đều đặn", example: "Evaluations are conducted with regularity.", exampleCn: "评估是有规律地进行的。", exampleVi: "Các đợt đánh giá được tiến hành một cách đều đặn.", category: "900" },
+            { id: 150, word: "replenish", ipa: "/rɪˈplenɪʃ/", pos: "verb", chinese: "补充, 再装满", vietnamese: "Cấp thêm, bổ sung", collocation: "replenish staff", collocationCn: "补充员工", collocationVi: "bổ sung nhân sự", example: "We need to replenish our talent pool.", exampleCn: "我们需要补充我们的人才库。", exampleVi: "Chúng ta cần bổ sung thêm vào nguồn nhân tài của mình.", category: "900" },
+            { id: 151, word: "simplicity", ipa: "/sɪmˈplɪsəti/", pos: "noun", chinese: "简单, 朴素", vietnamese: "Sự đơn giản", collocation: "for simplicity's sake", collocationCn: "为了简单起见", collocationVi: "vì sự đơn giản", example: "The app was redesigned for simplicity.", exampleCn: "该应用程序为了简洁而重新设计。", exampleVi: "Ứng dụng đã được thiết kế lại nhằm tạo sự đơn giản.", category: "900" },
+            { id: 152, word: "stellar", ipa: "/ˈstelər/", pos: "adjective", chinese: "卓越的, 出色的", vietnamese: "Xuất sắc, ưu tú", collocation: "stellar reputation", collocationCn: "卓越的声誉", collocationVi: "danh tiếng xuất sắc", example: "She has a stellar track record in sales.", exampleCn: "她在销售方面拥有卓越的业绩。", exampleVi: "Cô ấy có một thành tích xuất sắc trong ngành bán hàng.", category: "900" },
+            { id: 153, word: "versatile", ipa: "/ˈvɜːrsətl/", pos: "adjective", chinese: "多才多艺的, 万能的", vietnamese: "Nhiều tài, linh hoạt", collocation: "versatile employee", collocationCn: "多才多艺的员工", collocationVi: "nhân viên đa năng", example: "He is a versatile worker who handles multiple roles.", exampleCn: "他是一个能胜任多重角色的多才多艺的员工。", exampleVi: "Anh ấy là một nhân viên đa năng có thể đảm nhận nhiều vai trò.", category: "900" },
+            { id: 154, word: "adept", ipa: "/əˈdept/", pos: "adjective", chinese: "熟练的, 擅长的", vietnamese: "Thành thạo, tinh thông", collocation: "be adept at interviewing", collocationCn: "擅长面试", collocationVi: "thành thạo việc phỏng vấn", example: "She is adept at conflict resolution.", exampleCn: "她擅长解决冲突。", exampleVi: "Cô ấy rất tinh thông trong việc giải quyết xung đột.", category: "900" },
+            { id: 155, word: "against all odds", ipa: "/əˈɡenst ɔːl ɑːdz/", pos: "phrase", chinese: "克服一切困难", vietnamese: "Bất chấp mọi điều kiện bất lợi", collocation: "succeed against all odds", collocationCn: "克服一切困难取得成功", collocationVi: "thành công bất chấp khó khăn", example: "Against all odds, he secured the executive job.", exampleCn: "克服了一切困难，他获得了那个高管职位。", exampleVi: "Bất chấp mọi điều kiện bất lợi, anh ấy đã có được vị trí quản lý đó.", category: "900" },
+            { id: 156, word: "command", ipa: "/kəˈmænd/", pos: "noun / verb", chinese: "精通, 命令", vietnamese: "Lệnh, sự chỉ huy / Thành thạo", collocation: "good command of English", collocationCn: "精通英语", collocationVi: "thành thạo tiếng Anh tốt", example: "She has an excellent command of French.", exampleCn: "她精通法语。", exampleVi: "Cô ấy có khả năng sử dụng tiếng Pháp rất tinh通.", category: "900" },
+            { id: 157, word: "commensurate", ipa: "/kəˈmenʃərət/", pos: "adjective", chinese: "相称的, 相当的", vietnamese: "Tỷ lệ thuận, xứng với", collocation: "commensurate with experience", collocationCn: "与经验相称", collocationVi: "tương xứng với kinh nghiệm", example: "Salary will be commensurate with experience.", exampleCn: "薪水将与经验相称。", exampleVi: "Mức lương sẽ tương xứng với kinh nghiệm.", category: "900" },
+            { id: 158, word: "computer literate", ipa: "/kəmˈpjuːtər ˈlɪtərət/", pos: "phrase", chinese: "精通计算机的", vietnamese: "Biết sử dụng máy tính", collocation: "be computer literate", collocationCn: "懂计算机操作", collocationVi: "thành thạo máy tính", example: "All office workers must be computer literate.", exampleCn: "所有办公室人员必须具备计算机技能。", exampleVi: "Tất cả nhân viên văn phòng phải biết sử dụng máy tính.", category: "900" },
+            { id: 159, word: "eagerness", ipa: "/ˈiːɡərnəs/", pos: "noun", chinese: "热切, 渴望", vietnamese: "Sự say mê, háo hức", collocation: "eagerness to learn", collocationCn: "学习的热切渴望", collocationVi: "sự háo hức muốn học hỏi", example: "The candidate showed great eagerness to learn.", exampleCn: "该候选人展现出了极大的学习热情。", exampleVi: "Ứng viên đã thể hiện sự háo hức muốn học hỏi rất lớn.", category: "900" },
+            { id: 160, word: "familiarize oneself with", ipa: "/fəˈmɪliəraɪz wʌnˈself wɪð/", pos: "phrase", chinese: "使自己熟悉", vietnamese: "Tự tìm hiểu, tự làm quen với", collocation: "familiarize oneself with policy", collocationCn: "让自己熟悉政策", collocationVi: "tự làm quen với quy định", example: "New employees should familiarize themselves with company procedures.", exampleCn: "新员工应让自己熟悉公司流程。", exampleVi: "Nhân viên mới nên tự tìm hiểu và làm quen với quy trình của công ty.", category: "900" },
+            { id: 161, word: "increment", ipa: "/ˈɪŋkrəmənt/", pos: "noun", chinese: "增加, 增量", vietnamese: "Sự tăng dần", collocation: "annual salary increment", collocationCn: "年度薪资增长", collocationVi: "mức tăng lương hằng năm", example: "Salary increments are awarded annually.", exampleCn: "薪资按年增长。", exampleVi: "Mức tăng lương được trao hằng năm.", category: "900" },
+            { id: 162, word: "interpersonal skills", ipa: "/ˌɪntərˈpɜːrsənl skɪlz/", pos: "phrase", chinese: "人际交往能力", vietnamese: "Khả năng kết nối, kỹ năng mềm", collocation: "strong interpersonal skills", collocationCn: "强人际交往能力", collocationVi: "kỹ năng giao tiếp ứng xử tốt", example: "Managers need strong interpersonal skills.", exampleCn: "管理者需要较强的人际交往能力。", exampleVi: "Các quản lý cần có kỹ năng mềm tốt.", category: "900" },
+            { id: 163, word: "mindful", ipa: "/ˈmaɪndfl/", pos: "adjective", chinese: "留心的, 注意的", vietnamese: "Lưu tâm, quan tâm", collocation: "be mindful of deadlines", collocationCn: "留意截止日期", collocationVi: "lưu tâm đến hạn chót", example: "Be mindful of company regulations at all times.", exampleCn: "时刻留意公司的规定。", exampleVi: "Hãy luôn lưu tâm đến quy định của công ty mọi lúc.", category: "900" },
+            { id: 164, word: "preeminent", ipa: "/priˈemɪnənt/", pos: "adjective", chinese: "卓越的, 杰出的", vietnamese: "Xuất sắc, ưu việt, vượt trội", collocation: "preeminent expert", collocationCn: "杰出的专家", collocationVi: "chuyên gia vượt trội", example: "He is the preeminent expert in labor relations.", exampleCn: "他是劳资关系领域的杰出专家。", exampleVi: "Anh ấy là chuyên gia vượt trội trong mảng quan hệ lao động.", category: "900" },
+            { id: 165, word: "preliminary", ipa: "/prɪˈlɪmɪneri/", pos: "adjective", chinese: "初步的, 预备的", vietnamese: "Sơ bộ, mở đầu", collocation: "preliminary interview", collocationCn: "初试", collocationVi: "cuộc phỏng vấn sơ bộ", example: "Only five passed the preliminary interview.", exampleCn: "只有五人通过了初试。", exampleVi: "Chỉ có 5 người vượt qua cuộc phỏng vấn sơ bộ.", category: "900" },
+            { id: 166, word: "prerequisite", ipa: "/priːˈrekwəzɪt/", pos: "noun / adjective", chinese: "先决条件 / 首要的", vietnamese: "Điều kiện tiên quyết / Cần thiết", collocation: "essential prerequisite", collocationCn: "必要的先决条件", collocationVi: "điều kiện tiên quyết quan trọng", example: "Experience is a prerequisite for this post.", exampleCn: "经验是该职位的先决条件。", exampleVi: "Kinh nghiệm là điều kiện tiên quyết cho vị trí này.", category: "900" },
+            { id: 167, word: "probationer", ipa: "/proʊˈbeɪʃənər/", pos: "noun", chinese: "试用人员", vietnamese: "Nhân viên tập sự", collocation: "probationer period", collocationCn: "试用期", collocationVi: "thời gian thử việc", example: "Probationers undergo three months of training.", exampleCn: "试用人员接受三个月的培训。", exampleVi: "Nhân viên tập sự trải qua ba tháng đào tạo.", category: "900" },
+            { id: 168, word: "sternly", ipa: "/ˈstɜːrnli/", pos: "adverb", chinese: "严厉地, 坚决地", vietnamese: "Nghiêm khắc, cứng rắn", collocation: "warn sternly", collocationCn: "严厉警告", collocationVi: "cảnh báo nghiêm khắc", example: "The manager sternly reminded us of the rules.", exampleCn: "经理严厉地提醒我们遵守规定。", exampleVi: "Người quản lý đã nghiêm khắc nhắc nhở chúng tôi về quy định.", category: "900" }
+        ];
+
+        const readingPassages = [
+            {
+                id: 1,
+                title: "Bài 1 - Job Announcement: Senior Marketing Specialist",
+                text: "Apex Global is currently seeking a highly qualified candidate to fill a job opening in our personnel department. Applicants must meet all minimum requirements, including a bachelor's degree in business and at least three years of relevant work experience. Candidates should submit a detailed resume and cover letter before Friday. On-the-job training will be provided for new recruits.",
+                textCn: "Apex Global 目前正在寻找一位高素质的候选人来填补我们人事部门的职位空缺。申请人必须满足所有最低要求，包括商业学士学位和至少三年的相关工作经验。候选人应在周五之前提交详细的简历和求职信。公司将为新员工提供在职培训。",
+                textVi: "Apex Global hiện đang tìm kiếm một ứng viên có trình độ cao để lấp đầy vị trí công việc còn trống ở phòng nhân sự. Các ứng viên phải đáp ứng tất cả yêu cầu tối thiểu, bao gồm bằng cử nhân kinh doanh và ít nhất ba năm kinh nghiệm làm việc có liên quan. Các ứng viên nên nộp sơ yếu lý lịch chi tiết và đơn xin việc trước thứ Sáu. Chương trình đào tạo tại chỗ sẽ được cung cấp cho nhân viên mới.",
+                questions: [
+                    {
+                        question: "1. What is required of job applicants?",
+                        questionCn: "求职者被要求具备什么？",
+                        options: [
+                            "A master's degree in law",
+                            "A bachelor's degree in business and 3 years of experience",
+                            "Fluency in four languages",
+                            "Proof of military service"
+                        ],
+                        answer: 1,
+                        explanation: "The text specifies: 'bachelor's degree in business and at least three years of relevant work experience.'"
+                    },
+                    {
+                        question: "2. What will the company provide for new recruits?",
+                        questionCn: "公司将为新员工提供什么？",
+                        options: [
+                            "Free housing",
+                            "On-the-job training",
+                            "A company vehicle",
+                            "An immediate pay raise"
+                        ],
+                        answer: 1,
+                        explanation: "The text states: 'On-the-job training will be provided for new recruits.'"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Bài 2 - Email: Job Interview Schedule Confirmation",
+                text: "Dear Ms. Jenkins, Thank you for applying for the managerial position at Crestview Corp. We were very impressed by your qualifications and solid work history in accounting. We would like to invite you for an interview with our hiring committee next Tuesday at 10:00 A.M. Please bring a list of professional references and your university diploma.",
+                textCn: "亲爱的詹金斯女士，感谢您应聘 Crestview Corp 的管理职位。您的资历和在会计领域扎实的工作经历给我们留下了深刻印象。我们想邀请您参加下周二上午10:00与我们招聘委员会的面试。请携带一份专业推荐人名单和您的大学毕业证书。",
+                textVi: "Thư gửi cô Jenkins, Cảm ơn cô đã ứng tuyển vào vị trí quản lý tại Crestview Corp. Chúng tôi rất bị ấn tượng bởi bằng cấp chuyên môn và lịch sử làm việc vững vàng của cô trong ngành kế toán. Chúng tôi muốn mời cô tham gia buổi phỏng vấn với ủy ban tuyển dụng vào lúc 10:00 sáng thứ Ba tuần tới. Vui lòng mang theo danh sách người giới thiệu chuyên môn và bằng tốt nghiệp đại học của cô.",
+                questions: [
+                    {
+                        question: "1. Why was Ms. Jenkins invited for an interview?",
+                        questionCn: "为什么詹金斯女士被邀请参加面试？",
+                        options: [
+                            "She is a friend of the CEO",
+                            "Her qualifications and work history were impressive",
+                            "She submitted a video resume",
+                            "She was the only candidate available"
+                        ],
+                        answer: 1,
+                        explanation: "The email states: 'We were very impressed by your qualifications and solid work history...'"
+                    },
+                    {
+                        question: "2. What is Ms. Jenkins asked to bring to the interview?",
+                        questionCn: "詹金斯女士被要求带什么去面试？",
+                        options: [
+                            "A medical certificate",
+                            "A list of references and university diploma",
+                            "A tax declaration form",
+                            "Two passport photographs"
+                        ],
+                        answer: 1,
+                        explanation: "The text notes: 'Please bring a list of professional references and your university diploma.'"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Bài 3 - Internal Memo: New Employee Orientation Program",
+                text: "All newly hired trainees are required to attend the orientation session in the main conference room on Monday morning. The supervisor will address the audience regarding company regulations, employee benefits, and safety protocols. All participants must present their registration confirmation upon arrival.",
+                textCn: "所有新聘用的受训人员都必须参加周一上午在主会议室举行的岗前培训。主管将就公司规章、员工福利和安全协议向听众致辞。所有参与者在到达时必须出示其注册确认。",
+                textVi: "Tất cả các thực tập sinh mới được tuyển dụng đều được yêu cầu tham dự buổi định hướng tại phòng họp chính vào sáng thứ Hai. Người giám sát sẽ phát biểu với khán giả liên quan đến nội quy công ty, phúc lợi nhân viên và các giao thức an toàn. Tất cả người tham gia phải xuất trình xác nhận đăng ký khi đến.",
+                questions: [
+                    {
+                        question: "1. Who is required to attend the orientation session?",
+                        questionCn: "谁被要求参加岗前培训？",
+                        options: [
+                            "External auditors",
+                            "Newly hired trainees",
+                            "Retiring executives",
+                            "Job applicants"
+                        ],
+                        answer: 1,
+                        explanation: "The text clearly states: 'All newly hired trainees are required to attend the orientation session...'"
+                    },
+                    {
+                        question: "2. What must participants bring upon arrival?",
+                        questionCn: "参与者到达时必须出示什么？",
+                        options: [
+                            "A cover letter",
+                            "Their registration confirmation",
+                            "A proof of employment",
+                            "A payment receipt"
+                        ],
+                        answer: 1,
+                        explanation: "The memo says: 'All participants must present their registration confirmation upon arrival.'"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "Bài 4 - Notice: Recruitment & Staff Expansion",
+                text: "Due to rapid corporate expansion, Orbit Logistics is looking to recruit energetic sales representatives. Candidates who excel in interpersonal communication and are fluent in English will be given preference. The starting wage is highly competitive, and employees are entitled to performance bonuses and paid vacation.",
+                textCn: "由于公司快速扩张，Orbit Logistics 正寻求招聘精力充沛的销售代表。擅长人际沟通且精通英语的候选人将被优先考虑。起始工资极具竞争力，员工有权享受绩效奖金和带薪休假。",
+                textVi: "Do sự mở rộng nhanh chóng của doanh nghiệp, Orbit Logistics đang tìm kiếm tuyển dụng các đại diện bán hàng tràn đầy năng lượng. Những ứng viên xuất sắc trong giao tiếp ứng xử và nói tiếng Anh trôi chảy sẽ được ưu tiên. Mức lương khởi điểm rất có tính cạnh tranh, và nhân viên được hưởng các khoản tiền thưởng hiệu suất cùng kỳ nghỉ phép có trả lương.",
+                questions: [
+                    {
+                        question: "1. What position is Orbit Logistics hiring for?",
+                        questionCn: "Orbit Logistics 正在招聘什么职位？",
+                        options: [
+                            "Interior design consultant",
+                            "Sales representatives",
+                            "Computer programmers",
+                            "Legal counsel"
+                        ],
+                        answer: 1,
+                        explanation: "The text mentions: 'Orbit Logistics is looking to recruit energetic sales representatives.'"
+                    },
+                    {
+                        question: "2. Which candidates will be preferred?",
+                        questionCn: "哪些候选人将被优先考虑？",
+                        options: [
+                            "Those with a master's degree in physics",
+                            "Those with strong interpersonal skills and English fluency",
+                            "Those willing to work part-time only",
+                            "Those with 10 years of military experience"
+                        ],
+                        answer: 1,
+                        explanation: "The passage notes: 'Candidates who excel in interpersonal communication and are fluent in English will be given preference.'"
+                    }
+                ]
+            }
+        ];
+
+        function App() {
+            const [studyMode, setStudyMode] = React.useState('flashcard'); 
+            const [filter, setFilter] = React.useState('all'); 
+            const [onlyFavorites, setOnlyFavorites] = React.useState(false);
+            const [searchQuery, setSearchQuery] = React.useState('');
+            const [currentIndex, setCurrentIndex] = React.useState(0);
+            const [isFlipped, setIsFlipped] = React.useState(false);
+            const [isPlayingAudio, setIsPlayingAudio] = React.useState(false);
+            const [favorites, setFavorites] = React.useState([]);
+
+            const [selectedAccent, setSelectedAccent] = React.useState('en-US'); // 'en-US' or 'en-GB'
+
+            // Quiz State
+            const [quizScore, setQuizScore] = React.useState(0);
+            const [quizSelectedOption, setQuizSelectedOption] = React.useState(null);
+            const [quizAnswered, setQuizAnswered] = React.useState(false);
+
+            // Word Spelling State
+            const [spellingInput, setSpellingInput] = React.useState('');
+            const [spellingResult, setSpellingResult] = React.useState(null);
+
+            // Full Sentence Dictation State
+            const [dictationInput, setDictationInput] = React.useState('');
+            const [dictationResult, setDictationResult] = React.useState(null);
+            const [showDictationHint, setShowDictationInputHint] = React.useState(false);
+
+            // Reading Practice State
+            const [currentReadingIdx, setCurrentReadingIdx] = React.useState(0);
+            const [showReadingTrans, setShowReadingTrans] = React.useState(false);
+            const [readingAnswers, setReadingAnswers] = React.useState({});
+            const [readingSubmitted, setReadingSubmitted] = React.useState(false);
+
+            // Matching Game State
+            const [matchLeftList, setMatchLeftList] = React.useState([]);
+            const [matchRightList, setMatchRightList] = React.useState([]);
+            const [selectedLeft, setSelectedLeft] = React.useState(null);
+            const [selectedRight, setSelectedRight] = React.useState(null);
+            const [matchedIds, setMatchedIds] = React.useState([]);
+            const [mismatchError, setMismatchError] = React.useState(false);
+
+            const playAudio = (text, e, overrideLang = null, rateSpeed = 0.85) => {
+                if (e) e.stopPropagation();
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const targetLang = overrideLang || selectedAccent;
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = targetLang;
+                    utterance.rate = rateSpeed;
+
+                    const voices = window.speechSynthesis.getVoices();
+                    
+                    // Priority Search for Enhanced / Siri / Premium foreign voices
+                    const matchedVoice = voices.find(v => {
+                        const vLang = v.lang.replace('_', '-');
+                        const isTarget = vLang === targetLang || vLang.startsWith(targetLang);
+                        const isHighQuality = v.name.includes('Enhanced') || v.name.includes('Siri') || v.name.includes('Premium') || v.name.includes('Natural');
+                        return isTarget && isHighQuality;
+                    }) || voices.find(v => {
+                        const vLang = v.lang.replace('_', '-');
+                        return vLang === targetLang || vLang.startsWith(targetLang);
+                    });
+
+                    if (matchedVoice) {
+                        utterance.voice = matchedVoice;
+                    }
+                    
+                    utterance.onstart = () => setIsPlayingAudio(true);
+                    utterance.onend = () => setIsPlayingAudio(false);
+                    utterance.onerror = () => setIsPlayingAudio(false);
+                    
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    console.warn("Trình duyệt không hỗ trợ Web Speech API.");
+                }
+            };
+
+            // Prime voices on load
+            React.useEffect(() => {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.getVoices();
+                    window.speechSynthesis.onvoiceschanged = () => {
+                        window.speechSynthesis.getVoices();
+                    };
+                }
+            }, []);
+
+            const filteredData = React.useMemo(() => {
+                return fullVocabularyData.filter(item => {
+                    const matchesCategory = filter === 'all' || item.category === filter;
+                    const matchesFav = !onlyFavorites || favorites.includes(item.id);
+                    const matchesQuery = searchQuery === '' || 
+                        item.word.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.vietnamese.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        item.chinese.includes(searchQuery) ||
+                        (item.collocation && item.collocation.toLowerCase().includes(searchQuery.toLowerCase()));
+                    return matchesCategory && matchesFav && matchesQuery;
+                });
+            }, [filter, onlyFavorites, searchQuery, favorites]);
+
+            React.useEffect(() => {
+                setCurrentIndex(0);
+                setIsFlipped(false);
+                resetQuizState();
+            }, [filter, onlyFavorites, searchQuery, studyMode]);
+
+            // Setup Matching Game round
+            const setupMatchingRound = React.useCallback(() => {
+                if (filteredData.length === 0) return;
+                const pool = [...filteredData].sort(() => 0.5 - Math.random()).slice(0, 6);
+                
+                const lefts = pool.map(item => ({ id: item.id, word: item.word, ipa: item.ipa }));
+                const rights = pool.map(item => ({ id: item.id, meaning: `${item.vietnamese} (${item.chinese})` }));
+                
+                setMatchLeftList(lefts.sort(() => 0.5 - Math.random()));
+                setMatchRightList(rights.sort(() => 0.5 - Math.random()));
+                setSelectedLeft(null);
+                setSelectedRight(null);
+                setMatchedIds([]);
+                setMismatchError(false);
+            }, [filteredData]);
+
+            React.useEffect(() => {
+                if (studyMode === 'matching') {
+                    setupMatchingRound();
+                }
+            }, [studyMode, setupMatchingRound]);
+
+            const nextCard = () => {
+                if (filteredData.length === 0) return;
+                setIsFlipped(false);
+                resetQuizState();
+                setTimeout(() => {
+                    setCurrentIndex((prev) => (prev + 1) % filteredData.length);
+                }, 150);
+            };
+
+            const prevCard = () => {
+                if (filteredData.length === 0) return;
+                setIsFlipped(false);
+                resetQuizState();
+                setTimeout(() => {
+                    setCurrentIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);
+                }, 150);
+            };
+
+            const toggleFavorite = (id, e) => {
+                if (e) e.stopPropagation();
+                setFavorites(prev => 
+                    prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+                );
+            };
+
+            const resetQuizState = () => {
+                setQuizSelectedOption(null);
+                setQuizAnswered(false);
+                setSpellingInput('');
+                setSpellingResult(null);
+                setDictationInput('');
+                setDictationResult(null);
+                setShowDictationInputHint(false);
+            };
+
+            const current = filteredData[currentIndex] || fullVocabularyData[0];
+
+            // Quiz Options Generator
+            const quizOptions = React.useMemo(() => {
+                if (!current) return [];
+                const correctOption = current.vietnamese;
+                const otherItems = fullVocabularyData.filter(item => item.id !== current.id);
+                const shuffledOthers = [...otherItems].sort(() => 0.5 - Math.random()).slice(0, 3);
+                const options = [correctOption, ...shuffledOthers.map(i => i.vietnamese)];
+                return options.sort(() => 0.5 - Math.random());
+            }, [current]);
+
+            const handleQuizSelect = (option) => {
+                if (quizAnswered) return;
+                setQuizSelectedOption(option);
+                setQuizAnswered(true);
+                if (option === current.vietnamese) {
+                    setQuizScore(prev => prev + 1);
+                }
+            };
+
+            const handleSpellingSubmit = (e) => {
+                e.preventDefault();
+                if (!spellingInput.trim()) return;
+                const isCorrect = spellingInput.trim().toLowerCase() === current.word.toLowerCase();
+                setSpellingResult(isCorrect ? 'correct' : 'incorrect');
+            };
+
+            // Full Sentence Dictation Handler
+            const handleDictationSubmit = (e) => {
+                e.preventDefault();
+                if (!dictationInput.trim()) return;
+                
+                const cleanUser = dictationInput.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g,"");
+                const cleanTarget = current.example.trim().toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g,"");
+                
+                setDictationResult(cleanUser === cleanTarget ? 'correct' : 'incorrect');
+            };
+
+            // Matching Logic
+            const handleMatchClick = (type, item) => {
+                if (matchedIds.includes(item.id)) return;
+                
+                if (type === 'left') {
+                    setSelectedLeft(item);
+                    if (selectedRight) {
+                        checkMatch(item.id, selectedRight.id);
+                    }
+                } else {
+                    setSelectedRight(item);
+                    if (selectedLeft) {
+                        checkMatch(selectedLeft.id, item.id);
+                    }
+                }
+            };
+
+            const checkMatch = (leftId, rightId) => {
+                if (leftId === rightId) {
+                    setMatchedIds(prev => [...prev, leftId]);
+                    setSelectedLeft(null);
+                    setSelectedRight(null);
+                    setMismatchError(false);
+                } else {
+                    setMismatchError(true);
+                    setTimeout(() => {
+                        setSelectedLeft(null);
+                        setSelectedRight(null);
+                        setMismatchError(false);
+                    }, 700);
+                }
+            };
+
+            return (
+                <div className="min-h-screen flex flex-col items-center justify-between p-4 md:p-8">
+                    
+                    {/* Header */}
+                    <div className="w-full max-w-3xl text-center mb-4">
+                        <div className="flex items-center justify-center gap-2 mb-1">
+                            <span className="bg-blue-600 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Hackers TOEIC</span>
+                            <span className="bg-emerald-600 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Day 01 Complete (168 Từ)</span>
+                        </div>
+                        <h1 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tight">Tuyển Dụng (Recruitment)</h1>
+                        <p className="text-xs md:text-sm text-slate-500 font-medium mt-1">Chuẩn Dịch Anh - Trung (简体) - Việt + Audio Phát Âm Thật + Chép Chính Tả Câu</p>
+
+                        <div className="mt-3 flex items-center justify-center gap-2 bg-white px-3 py-1.5 rounded-xl shadow-sm border border-slate-200 inline-flex">
+                            <span className="text-xs font-bold text-slate-500">Giọng phát âm mặc định:</span>
+                            <button 
+                                onClick={() => setSelectedAccent('en-US')}
+                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${selectedAccent === 'en-US' ? 'bg-blue-600 text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                            >
+                                🇺🇸 Anh - Mỹ (en-US)
+                            </button>
+                            <button 
+                                onClick={() => setSelectedAccent('en-GB')}
+                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${selectedAccent === 'en-GB' ? 'bg-red-600 text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                            >
+                                🇬🇧 Anh - Anh (en-GB)
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Mode Selector Tabs */}
+                    <div className="w-full max-w-2xl mb-4 bg-slate-200/70 p-1.5 rounded-2xl flex items-center justify-between gap-1 shadow-inner text-xs font-bold flex-wrap">
+                        <button 
+                            onClick={() => setStudyMode('flashcard')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'flashcard' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-layer-group"></i> 📇 Flashcard
+                        </button>
+                        <button 
+                            onClick={() => setStudyMode('quiz')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'quiz' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-check-circle"></i> 🎯 Trắc nghiệm
+                        </button>
+                        <button 
+                            onClick={() => setStudyMode('spelling')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'spelling' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-keyboard"></i> ✍️ Gõ từ
+                        </button>
+                        <button 
+                            onClick={() => setStudyMode('matching')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'matching' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-puzzle-piece"></i> 🧩 Nối từ
+                        </button>
+                        <button 
+                            onClick={() => setStudyMode('dictation')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'dictation' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-headphones"></i> 🎧 Chép câu
+                        </button>
+                        <button 
+                            onClick={() => setStudyMode('reading')}
+                            className={`flex-1 min-w-[90px] py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${studyMode === 'reading' ? 'bg-white text-blue-600 shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                        >
+                            <i className="fas fa-book-open"></i> 📖 Đọc hiểu
+                        </button>
+                    </div>
+
+                    {/* Filter Tabs & Search */}
+                    {studyMode !== 'reading' && (
+                        <div className="w-full max-w-xl mb-4 space-y-3">
+                            <div className="relative">
+                                <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input 
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Tìm từ vựng, cụm collocation, nghĩa..."
+                                    className="w-full pl-11 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+                                />
+                                {searchQuery && (
+                                    <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                                        <i className="fas fa-times-circle"></i>
+                                    </button>
+                                )}
+                            </div>
+
+                            {/* Category & Star Filters */}
+                            <div className="flex flex-wrap items-center justify-center gap-1.5 text-xs font-bold">
+                                <button 
+                                    onClick={() => { setFilter('all'); setOnlyFavorites(false); }}
+                                    className={`px-3 py-1.5 rounded-lg transition-all ${filter === 'all' && !onlyFavorites ? 'bg-slate-800 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+                                >
+                                    Tất cả ({fullVocabularyData.length})
+                                </button>
+                                <button 
+                                    onClick={() => { setFilter('core'); setOnlyFavorites(false); }}
+                                    className={`px-3 py-1.5 rounded-lg transition-all ${filter === 'core' && !onlyFavorites ? 'bg-blue-600 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+                                >
+                                    Trọng tâm 40 từ
+                                </button>
+                                <button 
+                                    onClick={() => { setFilter('basic'); setOnlyFavorites(false); }}
+                                    className={`px-3 py-1.5 rounded-lg transition-all ${filter === 'basic' && !onlyFavorites ? 'bg-emerald-600 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+                                >
+                                    Cơ bản (28)
+                                </button>
+                                <button 
+                                    onClick={() => { setFilter('800'); setOnlyFavorites(false); }}
+                                    className={`px-3 py-1.5 rounded-lg transition-all ${filter === '800' && !onlyFavorites ? 'bg-amber-600 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+                                >
+                                    Mức 800 (65)
+                                </button>
+                                <button 
+                                    onClick={() => { setFilter('900'); setOnlyFavorites(false); }}
+                                    className={`px-3 py-1.5 rounded-lg transition-all ${filter === '900' && !onlyFavorites ? 'bg-purple-600 text-white shadow' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+                                >
+                                    Mức 900 (35)
+                                </button>
+                                <button 
+                                    onClick={() => setOnlyFavorites(!onlyFavorites)}
+                                    className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 ${onlyFavorites ? 'bg-amber-500 text-white shadow' : 'bg-white text-amber-600 border border-amber-200 hover:bg-amber-50'}`}
+                                >
+                                    <i className="fas fa-star"></i> Yêu thích ({favorites.length})
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Progress Bar */}
+                    {studyMode !== 'matching' && studyMode !== 'reading' && (
+                        <div className="w-full max-w-md mb-4">
+                            <div className="flex justify-between text-xs font-bold text-slate-400 mb-1.5">
+                                <span>TIẾN ĐỘ BÀI HỌC</span>
+                                <span>{filteredData.length > 0 ? currentIndex + 1 : 0} / {filteredData.length}</span>
+                            </div>
+                            <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                                <div 
+                                    className="h-full bg-blue-600 transition-all duration-300" 
+                                    style={{ width: `${filteredData.length > 0 ? ((currentIndex + 1) / filteredData.length) * 100 : 0}%` }}
+                                ></div>
+                            </div>
+                        </div>
+                    )}
+
+                    {filteredData.length === 0 && studyMode !== 'reading' ? (
+                        <div className="w-full max-w-md h-[450px] bg-white rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-slate-200 shadow-sm">
+                            <i className="fas fa-search text-4xl text-slate-300 mb-3"></i>
+                            <p className="text-slate-600 font-semibold">Không tìm thấy từ vựng phù hợp!</p>
+                            <button onClick={() => { setFilter('all'); setOnlyFavorites(false); setSearchQuery(''); }} className="mt-4 px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl shadow">Bắt đầu lại</button>
+                        </div>
+                    ) : studyMode === 'flashcard' ? (
+                        /* FLASHCARD MODE */
+                        <div className="perspective w-full max-w-md h-[450px] cursor-pointer" onClick={() => setIsFlipped(!isFlipped)}>
+                            <div className={`card-inner ${isFlipped ? 'card-flipped' : ''}`}>
+                                
+                                {/* FRONT SIDE */}
+                                <div className="card-face bg-white flex flex-col justify-between p-7 border-t-8 border-blue-600">
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">
+                                            #{current.id} • {current.category.toUpperCase()}
+                                        </span>
+                                        <button 
+                                            onClick={(e) => toggleFavorite(current.id, e)}
+                                            className={`text-lg transition-transform active:scale-125 ${favorites.includes(current.id) ? 'text-amber-400' : 'text-slate-300 hover:text-slate-400'}`}
+                                        >
+                                            <i className="fas fa-star"></i>
+                                        </button>
+                                    </div>
+
+                                    <div className="text-center my-auto">
+                                        <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-1">{current.pos}</p>
+                                        
+                                        <div className="flex items-center justify-center gap-3 mb-2">
+                                            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 tracking-tight">{current.word}</h2>
+                                        </div>
+
+                                        <div className="flex items-center justify-center gap-2 mb-3">
+                                            <button 
+                                                onClick={(e) => playAudio(current.word, e, 'en-US')} 
+                                                className="px-3 py-1.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
+                                                title="Phát âm chuẩn Anh - Mỹ"
+                                            >
+                                                <i className="fas fa-volume-up"></i> 🇺🇸 Mỹ
+                                            </button>
+                                            <button 
+                                                onClick={(e) => playAudio(current.word, e, 'en-GB')} 
+                                                className="px-3 py-1.5 rounded-full bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
+                                                title="Phát âm chuẩn Anh - Anh"
+                                            >
+                                                <i className="fas fa-volume-up"></i> 🇬🇧 Anh
+                                            </button>
+                                        </div>
+
+                                        <p className="text-base text-slate-500 font-medium">{current.ipa}</p>
+                                    </div>
+
+                                    <div className="text-center pt-4 border-t border-slate-100">
+                                        <span className="inline-flex items-center text-xs text-slate-400 font-medium gap-1.5">
+                                            <i className="fas fa-rotate text-blue-500"></i> Nhấn để lật xem nghĩa, Collocation & ví dụ
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* BACK SIDE */}
+                                <div className="card-face card-back p-6 flex flex-col justify-between border-t-8 border-emerald-500">
+                                    <div>
+                                        <div className="flex justify-between items-center mb-3">
+                                            <div className="flex items-center gap-2">
+                                                <h3 className="text-xl font-black text-slate-800">{current.word}</h3>
+                                                
+                                                <button 
+                                                    onClick={(e) => playAudio(current.word, e, 'en-US')} 
+                                                    className="px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-600 text-[11px] font-bold flex items-center gap-1"
+                                                    title="Phát âm Anh - Mỹ"
+                                                >
+                                                    🇺🇸 <i className="fas fa-volume-up text-[10px]"></i>
+                                                </button>
+                                                <button 
+                                                    onClick={(e) => playAudio(current.word, e, 'en-GB')} 
+                                                    className="px-2 py-0.5 rounded-md bg-red-50 hover:bg-red-100 text-red-600 text-[11px] font-bold flex items-center gap-1"
+                                                    title="Phát âm Anh - Anh"
+                                                >
+                                                    🇬🇧 <i className="fas fa-volume-up text-[10px]"></i>
+                                                </button>
+                                            </div>
+                                            <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold rounded-md uppercase">{current.pos}</span>
+                                        </div>
+
+                                        <div className="space-y-3 overflow-y-auto max-h-[310px] custom-scrollbar pr-1">
+                                            {/* Meanings */}
+                                            <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Nghĩa (Meanings)</div>
+                                                <div className="space-y-1">
+                                                    <div className="text-slate-800 font-bold text-base leading-snug">
+                                                        <span className="text-blue-600 mr-1.5">VI:</span>{current.vietnamese}
+                                                    </div>
+                                                    <div className="text-emerald-700 font-bold text-base leading-snug">
+                                                        <span className="text-emerald-600 mr-1.5">CN (简体):</span>{current.chinese}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* COLLOCATION WITH FULL TRANSLATION */}
+                                            {current.collocation && (
+                                                <div className="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
+                                                    <div className="flex items-center justify-between mb-1">
+                                                        <span className="text-[10px] font-black text-amber-700 uppercase tracking-wider flex items-center gap-1">
+                                                            <i className="fas fa-link text-amber-500"></i> Cụm Từ Thường Gặp (Collocation)
+                                                        </span>
+                                                        <button 
+                                                            onClick={(e) => playAudio(current.collocation, e)}
+                                                            className="text-amber-700 hover:text-amber-900 text-xs font-semibold"
+                                                        >
+                                                            <i className="fas fa-volume-up"></i>
+                                                        </button>
+                                                    </div>
+                                                    <p className="text-amber-950 font-bold text-sm mb-1">{current.collocation}</p>
+                                                    <div className="text-xs space-y-0.5 text-amber-900 font-medium">
+                                                        <p><b>VI:</b> {current.collocationVi || current.vietnamese}</p>
+                                                        <p><b>CN:</b> {current.collocationCn || current.chinese}</p>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Example with English, Chinese & Vietnamese */}
+                                            <div className="bg-blue-50/40 p-3 rounded-xl border border-blue-100">
+                                                <div className="flex items-center justify-between mb-1">
+                                                    <span className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Ví dụ (Example)</span>
+                                                    <button 
+                                                        onClick={(e) => playAudio(current.example, e)}
+                                                        className="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1"
+                                                    >
+                                                        <i className="fas fa-play-circle"></i> Nghe câu
+                                                    </button>
+                                                </div>
+                                                <p className="text-slate-800 text-xs font-semibold italic mb-1.5 leading-relaxed">"{current.example}"</p>
+                                                <p className="text-emerald-700 text-xs font-medium mb-1"><b>CN:</b> {current.exampleCn}</p>
+                                                <p className="text-slate-500 text-xs font-medium"><b>VI:</b> {current.exampleVi}</p>
+                                            </div>
+
+                                            {/* Word Family & Synonym */}
+                                            <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+                                                <div className="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                                    <span className="text-[9px] font-bold text-slate-400 uppercase block mb-0.5">Word Family</span>
+                                                    <p className="text-slate-700 font-medium text-[11px]">{current.wordFamily || '—'}</p>
+                                                </div>
+                                                <div className="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                                    <span className="text-[9px] font-bold text-slate-400 uppercase block mb-0.5">Synonym</span>
+                                                    <p className="text-slate-700 font-medium text-[11px]">{current.synonym || '—'}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="text-center pt-2">
+                                        <span className="text-[10px] text-slate-300 font-semibold uppercase">Nhấn để lật lại mặt trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : studyMode === 'quiz' ? (
+                        /* QUIZ MODE */
+                        <div className="w-full max-w-md h-[450px] bg-white rounded-2xl p-6 border border-slate-200 shadow-md flex flex-col justify-between">
+                            <div>
+                                <div className="flex justify-between items-center mb-4">
+                                    <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase">
+                                        Câu {currentIndex + 1} / {filteredData.length}
+                                    </span>
+                                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+                                        Điểm: {quizScore}
+                                    </span>
+                                </div>
+
+                                <div className="text-center mb-6">
+                                    <h3 className="text-3xl font-black text-slate-800 mb-1">{current.word}</h3>
+                                    <p className="text-xs font-medium text-slate-400 mb-2">{current.ipa} • {current.pos}</p>
+                                    <button 
+                                        onClick={(e) => playAudio(current.word, e)}
+                                        className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold inline-flex items-center gap-1 hover:bg-blue-100"
+                                    >
+                                        <i className="fas fa-volume-up"></i> Nghe âm
+                                    </button>
+                                </div>
+
+                                <p className="text-xs font-extrabold text-slate-400 uppercase tracking-wider text-center mb-3">Chọn nghĩa đúng của từ:</p>
+
+                                <div className="space-y-2.5">
+                                    {quizOptions.map((option, idx) => {
+                                        let btnStyle = "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100";
+                                        if (quizAnswered) {
+                                            if (option === current.vietnamese) {
+                                                btnStyle = "bg-emerald-500 text-white border-emerald-600 font-bold";
+                                            } else if (option === quizSelectedOption) {
+                                                btnStyle = "bg-rose-500 text-white border-rose-600 font-bold";
+                                            } else {
+                                                btnStyle = "bg-slate-50 border-slate-100 text-slate-300";
+                                            }
+                                        }
+
+                                        return (
+                                            <button
+                                                key={idx}
+                                                onClick={() => handleQuizSelect(option)}
+                                                className={`w-full py-3 px-4 rounded-xl border text-sm font-semibold transition-all text-left flex items-center justify-between ${btnStyle}`}
+                                            >
+                                                <span>{option}</span>
+                                                {quizAnswered && option === current.vietnamese && <i className="fas fa-check-circle"></i>}
+                                                {quizAnswered && option === quizSelectedOption && option !== current.vietnamese && <i className="fas fa-times-circle"></i>}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={nextCard}
+                                disabled={!quizAnswered}
+                                className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all mt-4"
+                            >
+                                Câu tiếp theo <i className="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    ) : studyMode === 'spelling' ? (
+                        /* SPELLING MODE */
+                        <div className="w-full max-w-md h-[450px] bg-white rounded-2xl p-6 border border-slate-200 shadow-md flex flex-col justify-between">
+                            <div>
+                                <div className="flex justify-between items-center mb-4">
+                                    <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase">
+                                        Luyện nhớ từ #{currentIndex + 1}
+                                    </span>
+                                    <button onClick={(e) => playAudio(current.word, e)} className="text-xs text-blue-600 font-bold">
+                                        <i className="fas fa-volume-up"></i> Gợi ý âm
+                                    </button>
+                                </div>
+
+                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-5 text-center">
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Nghĩa tiếng Việt & Trung</p>
+                                    <p className="text-xl font-black text-slate-800 mb-1">{current.vietnamese}</p>
+                                    <p className="text-sm font-bold text-emerald-600">{current.chinese}</p>
+                                    <p className="text-xs text-slate-400 mt-2 italic">IPA: {current.ipa}</p>
+                                </div>
+
+                                <form onSubmit={handleSpellingSubmit} className="space-y-3">
+                                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Nhập từ tiếng Anh chính xác:</label>
+                                    <input 
+                                        type="text"
+                                        value={spellingInput}
+                                        onChange={(e) => { setSpellingInput(e.target.value); setSpellingResult(null); }}
+                                        placeholder="Gõ từ tiếng Anh vào đây..."
+                                        className="w-full px-4 py-3 bg-slate-50 border-2 border-blue-200 rounded-xl text-center font-bold text-lg text-slate-800 focus:outline-none focus:border-blue-600"
+                                        autoFocus
+                                    />
+                                    <button 
+                                        type="submit"
+                                        className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all"
+                                    >
+                                        Kiểm tra đáp án
+                                    </button>
+                                </form>
+
+                                {spellingResult === 'correct' && (
+                                    <div className="mt-4 p-3 bg-emerald-100 text-emerald-800 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2">
+                                        <i className="fas fa-check-circle text-base"></i> Chính xác! Rất giỏi!
+                                    </div>
+                                )}
+                                {spellingResult === 'incorrect' && (
+                                    <div className="mt-4 p-3 bg-rose-100 text-rose-800 rounded-xl text-xs font-bold text-center">
+                                        <p><i className="fas fa-times-circle"></i> Chưa đúng rồi!</p>
+                                        <p className="mt-1">Đáp án đúng là: <span className="text-base font-black underline">{current.word}</span></p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <button 
+                                onClick={nextCard}
+                                className="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all mt-4"
+                            >
+                                Thẻ tiếp theo <i className="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    ) : studyMode === 'dictation' ? (
+                        /* FULL SENTENCE DICTATION MODE */
+                        <div className="w-full max-w-md min-h-[480px] bg-white rounded-2xl p-6 border border-slate-200 shadow-md flex flex-col justify-between">
+                            <div>
+                                <div className="flex justify-between items-center mb-3">
+                                    <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase">
+                                        🎧 Chép chính tả câu #{currentIndex + 1}
+                                    </span>
+                                    <span className="text-xs font-bold text-slate-400">
+                                        Từ khóa: <b className="text-blue-600">{current.word}</b>
+                                    </span>
+                                </div>
+
+                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4 text-center space-y-2">
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Nghe phát âm cả câu hoàn chỉnh:</p>
+                                    <div className="flex justify-center gap-2">
+                                        <button 
+                                            onClick={(e) => playAudio(current.example, e, selectedAccent, 0.85)} 
+                                            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center gap-2 shadow-sm active:scale-95 transition-all"
+                                        >
+                                            <i className="fas fa-volume-up text-base"></i> 🔊 Nghe tốc độ chuẩn
+                                        </button>
+                                        <button 
+                                            onClick={(e) => playAudio(current.example, e, selectedAccent, 0.65)} 
+                                            className="px-3 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold flex items-center gap-1.5 active:scale-95 transition-all"
+                                            title="Nghe chậm"
+                                        >
+                                            <i className="fas fa-turtle"></i> 🐢 Nghe chậm
+                                        </button>
+                                    </div>
+                                    <p className="text-xs text-slate-500 font-medium pt-1">
+                                        <b>Gợi ý nghĩa câu:</b> {current.exampleVi}
+                                    </p>
+                                </div>
+
+                                <form onSubmit={handleDictationSubmit} className="space-y-3">
+                                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider">Chép lại câu tiếng Anh bạn nghe được:</label>
+                                    <textarea 
+                                        rows="3"
+                                        value={dictationInput}
+                                        onChange={(e) => { setDictationInput(e.target.value); setDictationResult(null); }}
+                                        placeholder="Gõ toàn bộ câu tiếng Anh vào đây..."
+                                        className="w-full p-3 bg-slate-50 border-2 border-slate-200 rounded-xl text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-600"
+                                    ></textarea>
+
+                                    <div className="flex gap-2">
+                                        <button 
+                                            type="button"
+                                            onClick={() => setShowDictationInputHint(!showDictationHint)}
+                                            className="px-3 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold rounded-xl text-xs flex items-center gap-1 border border-amber-200"
+                                        >
+                                            <i className="far fa-lightbulb"></i> {showDictationHint ? 'Ẩn đáp án' : 'Xem đáp án'}
+                                        </button>
+                                        <button 
+                                            type="submit"
+                                            className="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all"
+                                        >
+                                            Kiểm tra câu
+                                        </button>
+                                    </div>
+                                </form>
+
+                                {showDictationHint && (
+                                    <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                                        <p className="font-bold mb-1">Đáp án câu gốc:</p>
+                                        <p className="italic font-semibold">"{current.example}"</p>
+                                        <p className="mt-1 text-[11px] text-emerald-700"><b>CN:</b> {current.exampleCn}</p>
+                                    </div>
+                                )}
+
+                                {dictationResult === 'correct' && (
+                                    <div className="mt-3 p-3 bg-emerald-100 text-emerald-800 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2">
+                                        <i className="fas fa-check-circle text-base"></i> Chính xác tuyệt đối! Bạn nghe rất tốt!
+                                    </div>
+                                )}
+                                {dictationResult === 'incorrect' && (
+                                    <div className="mt-3 p-3 bg-rose-100 text-rose-900 rounded-xl text-xs font-bold text-left space-y-1">
+                                        <p className="text-rose-700 flex items-center gap-1"><i className="fas fa-times-circle"></i> Chưa chính xác hoàn toàn!</p>
+                                        <p className="text-slate-800 font-normal">Câu gốc chuẩn: <span className="font-bold underline">{current.example}</span></p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <button 
+                                onClick={nextCard}
+                                className="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all mt-4"
+                            >
+                                Câu tiếp theo <i className="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    ) : studyMode === 'reading' ? (
+                        /* READING PASSAGE MODE */
+                        <div className="w-full max-w-xl bg-white rounded-2xl p-6 border border-slate-200 shadow-md space-y-5">
+                            {/* Passage Selection Tabs */}
+                            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar">
+                                <span className="text-xs font-black text-slate-400 uppercase tracking-wider mr-1 whitespace-nowrap">Chọn bài:</span>
+                                {readingPassages.map((p, idx) => (
+                                    <button 
+                                        key={p.id}
+                                        onClick={() => {
+                                            setCurrentReadingIdx(idx);
+                                            setShowReadingTrans(false);
+                                            setReadingAnswers({});
+                                            setReadingSubmitted(false);
+                                        }}
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${currentReadingIdx === idx ? 'bg-blue-600 text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                                    >
+                                        Bài {idx + 1}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                                <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">
+                                    📖 Bài {currentReadingIdx + 1} / {readingPassages.length} • TOEIC Part 7
+                                </span>
+                                <button 
+                                    onClick={(e) => playAudio(readingPassages[currentReadingIdx].text, e)}
+                                    className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-lg font-bold flex items-center gap-1 hover:bg-blue-100"
+                                >
+                                    <i className="fas fa-volume-up"></i> Nghe đọc bài
+                                </button>
+                            </div>
+
+                            <div className="space-y-3">
+                                <h3 className="text-base font-extrabold text-slate-800">{readingPassages[currentReadingIdx].title}</h3>
+                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                    <p className="text-slate-800 text-sm leading-relaxed font-medium">
+                                        {readingPassages[currentReadingIdx].text}
+                                    </p>
+                                </div>
+
+                                {/* Toggle Translation Button */}
+                                <div className="text-right">
+                                    <button 
+                                        onClick={() => setShowReadingTrans(!showReadingTrans)}
+                                        className="text-xs text-blue-600 hover:text-blue-800 font-bold inline-flex items-center gap-1 underline"
+                                    >
+                                        <i className="fas fa-language"></i> {showReadingTrans ? 'Ẩn bản dịch' : 'Hiện dịch tiếng Trung / Việt'}
+                                    </button>
+                                </div>
+
+                                {showReadingTrans && (
+                                    <div className="bg-slate-100 p-4 rounded-xl text-xs space-y-2 border border-slate-200 animate-fadeIn">
+                                        <p className="text-emerald-800 font-medium"><b>🇨🇳 中文 (简体):</b> {readingPassages[currentReadingIdx].textCn}</p>
+                                        <p className="text-slate-700 font-medium"><b>🇻🇳 Tiếng Việt:</b> {readingPassages[currentReadingIdx].textVi}</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Reading Questions */}
+                            <div className="space-y-4 pt-2 border-t border-slate-100">
+                                <h4 className="text-xs font-black text-slate-400 uppercase tracking-wider">Câu hỏi kiểm tra đọc hiểu:</h4>
+                                {readingPassages[currentReadingIdx].questions.map((q, qIdx) => (
+                                    <div key={qIdx} className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2.5">
+                                        <p className="text-sm font-bold text-slate-800">{q.question}</p>
+                                        <p className="text-xs text-emerald-700 font-medium">{q.questionCn}</p>
+                                        
+                                        <div className="space-y-1.5 pt-1">
+                                            {q.options.map((opt, optIdx) => {
+                                                const isSelected = readingAnswers[qIdx] === optIdx;
+                                                let btnClass = "bg-white border-slate-200 text-slate-700 hover:bg-slate-100";
+                                                
+                                                if (readingSubmitted) {
+                                                    if (optIdx === q.answer) {
+                                                        btnClass = "bg-emerald-500 text-white font-bold border-emerald-600";
+                                                    } else if (isSelected) {
+                                                        btnClass = "bg-rose-500 text-white font-bold border-rose-600";
+                                                    } else {
+                                                        btnClass = "bg-white text-slate-300 border-slate-100";
+                                                    }
+                                                } else if (isSelected) {
+                                                    btnClass = "bg-blue-600 text-white font-bold border-blue-700";
+                                                }
+
+                                                return (
+                                                    <button 
+                                                        key={optIdx}
+                                                        onClick={() => !readingSubmitted && setReadingAnswers(prev => ({...prev, [qIdx]: optIdx}))}
+                                                        className={`w-full p-2.5 rounded-lg border text-xs text-left transition-all flex items-center justify-between ${btnClass}`}
+                                                    >
+                                                        <span>{opt}</span>
+                                                        {readingSubmitted && optIdx === q.answer && <i className="fas fa-check-circle"></i>}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {readingSubmitted && (
+                                            <p className="text-[11px] text-slate-500 italic pt-1">
+                                                <b>Giải thích:</b> {q.explanation}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))}
+
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => setReadingSubmitted(!readingSubmitted)}
+                                        className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all"
+                                    >
+                                        {readingSubmitted ? 'Làm lại bài này' : 'Nộp bài & Xem giải thích'}
+                                    </button>
+                                    {currentReadingIdx < readingPassages.length - 1 && (
+                                        <button 
+                                            onClick={() => {
+                                                setCurrentReadingIdx(prev => prev + 1);
+                                                setShowReadingTrans(false);
+                                                setReadingAnswers({});
+                                                setReadingSubmitted(false);
+                                            }}
+                                            className="px-4 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all"
+                                        >
+                                            Bài tiếp <i className="fas fa-arrow-right ml-1"></i>
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        /* MATCHING GAME MODE */
+                        <div className="w-full max-w-xl min-h-[450px] bg-white rounded-2xl p-6 border border-slate-200 shadow-md flex flex-col justify-between">
+                            <div>
+                                <div className="flex justify-between items-center mb-4">
+                                    <span className="text-xs font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase">
+                                        🧩 Nối từ vựng với nghĩa ({matchedIds.length} / {matchLeftList.length})
+                                    </span>
+                                    <button 
+                                        onClick={setupMatchingRound} 
+                                        className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-lg font-bold flex items-center gap-1 transition-all"
+                                    >
+                                        <i className="fas fa-sync-alt"></i> Lượt mới
+                                    </button>
+                                </div>
+
+                                <p className="text-xs font-bold text-slate-400 text-center uppercase tracking-wider mb-4">
+                                    Bấm chọn 1 từ bên trái rồi chọn nghĩa đúng ở bên phải:
+                                </p>
+
+                                {matchedIds.length === matchLeftList.length && matchLeftList.length > 0 ? (
+                                    <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center my-6">
+                                        <i className="fas fa-trophy text-4xl text-amber-400 mb-2"></i>
+                                        <h4 className="text-xl font-black text-emerald-800 mb-1">Xuất sắc! Đã nối đúng tất cả!</h4>
+                                        <p className="text-xs font-semibold text-emerald-600 mb-4">Bạn đã ghi nhớ rất tốt các từ vựng này.</p>
+                                        <button 
+                                            onClick={setupMatchingRound}
+                                            className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow transition-all"
+                                        >
+                                            Chơi lượt tiếp theo <i className="fas fa-arrow-right ml-1"></i>
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {/* LEFT COLUMN: WORDS */}
+                                        <div className="space-y-2">
+                                            {matchLeftList.map((item) => {
+                                                const isMatched = matchedIds.includes(item.id);
+                                                const isSelected = selectedLeft && selectedLeft.id === item.id;
+                                                
+                                                let btnClass = "bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100";
+                                                if (isMatched) {
+                                                    btnClass = "bg-emerald-50 border-emerald-200 text-emerald-400 opacity-40 cursor-default";
+                                                } else if (isSelected) {
+                                                    btnClass = mismatchError ? "bg-rose-500 text-white border-rose-600 shadow-md animate-bounce" : "bg-blue-600 text-white border-blue-700 shadow-md scale-102";
+                                                }
+
+                                                return (
+                                                    <button
+                                                        key={item.id}
+                                                        disabled={isMatched}
+                                                        onClick={() => handleMatchClick('left', item)}
+                                                        className={`w-full p-3 rounded-xl border text-xs md:text-sm font-bold transition-all text-left flex items-center justify-between ${btnClass}`}
+                                                    >
+                                                        <div>
+                                                            <p className="font-extrabold">{item.word}</p>
+                                                            <p className="text-[10px] font-normal opacity-75">{item.ipa}</p>
+                                                        </div>
+                                                        {isMatched && <i className="fas fa-check text-emerald-500"></i>}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {/* RIGHT COLUMN: MEANINGS */}
+                                        <div className="space-y-2">
+                                            {matchRightList.map((item) => {
+                                                const isMatched = matchedIds.includes(item.id);
+                                                const isSelected = selectedRight && selectedRight.id === item.id;
+
+                                                let btnClass = "bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100";
+                                                if (isMatched) {
+                                                    btnClass = "bg-emerald-50 border-emerald-200 text-emerald-400 opacity-40 cursor-default";
+                                                } else if (isSelected) {
+                                                    btnClass = mismatchError ? "bg-rose-500 text-white border-rose-600 shadow-md animate-bounce" : "bg-blue-600 text-white border-blue-700 shadow-md scale-102";
+                                                }
+
+                                                return (
+                                                    <button
+                                                        key={item.id}
+                                                        disabled={isMatched}
+                                                        onClick={() => handleMatchClick('right', item)}
+                                                        className={`w-full p-3 rounded-xl border text-xs md:text-sm font-semibold transition-all text-left flex items-center justify-between ${btnClass}`}
+                                                    >
+                                                        <span>{item.meaning}</span>
+                                                        {isMatched && <i className="fas fa-check text-emerald-500"></i>}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="mt-4 pt-3 border-t border-slate-100 text-center">
+                                <span className="text-[11px] text-slate-400 font-medium">Luyện tập nối từ giúp phản xạ nhận diện nghĩa từ vựng tức thì khi làm bài Reading.</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Navigation Buttons for Flashcards */}
+                    {studyMode === 'flashcard' && (
+                        <div className="flex items-center gap-5 mt-6">
+                            <button 
+                                onClick={prevCard}
+                                disabled={filteredData.length === 0}
+                                className="w-12 h-12 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 active:scale-95 transition-all disabled:opacity-50"
+                                title="Thẻ trước"
+                            >
+                                <i className="fas fa-arrow-left"></i>
+                            </button>
+                            
+                            <button 
+                                onClick={() => setIsFlipped(!isFlipped)}
+                                className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-3 rounded-xl font-bold shadow-md transition-all active:scale-95 text-xs uppercase tracking-wider"
+                            >
+                                {isFlipped ? "Mặt Trước" : "Lật Mặt Sau"}
+                            </button>
+
+                            <button 
+                                onClick={nextCard}
+                                disabled={filteredData.length === 0}
+                                className="w-12 h-12 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 active:scale-95 transition-all disabled:opacity-50"
+                                title="Thẻ tiếp theo"
+                            >
+                                <i className="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Tips footer */}
+                    <p className="mt-6 text-slate-400 text-xs text-center flex items-center justify-center gap-1.5">
+                        <i className="far fa-lightbulb text-amber-400"></i>
+                        <span>Bấm vào biểu tượng loa để nghe phát âm giọng Mỹ / Anh chuẩn (Web Speech API).</span>
+                    </p>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
